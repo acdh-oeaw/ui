@@ -1,0 +1,37 @@
+{
+	"$schema": "https://turbo.build/schema.json",
+	"ui": "tui",
+	"tasks": {
+		"build": {
+			"dependsOn": ["^build"],
+			"inputs": ["$TURBO_DEFAULT$", ".env", ".env.*"],
+			"outputs": [".next/**", "!.next/cache/**", "dist/**", "storybook-static/**"]
+		},
+		"dev": {
+			"cache": false,
+			"persistent": true
+		},
+		"//#format:check": {},
+		"//#format:fix": {},
+		"lint:check": {
+			"dependsOn": ["^lint:check"]
+		},
+		"lint:fix": {
+			"dependsOn": ["^lint:fix"]
+		},
+		"types:check": {
+			"dependsOn": ["^types:check"]
+		},
+		"test": {
+			"dependsOn": ["^test"],
+			"outputs": ["coverage/**"]
+		},
+		"test:watch": {
+			"cache": false,
+			"persistent": true
+		},
+		"validate": {
+			"dependsOn": ["format:check", "lint:check", "types:check", "test"]
+		}
+	}
+}
