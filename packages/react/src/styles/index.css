@@ -1,0 +1,25 @@
+@import url("@fontsource-variable/inter/slnt.css");
+
+:root {
+	/** Fonts */
+	--font-body: "Inter Variable";
+}
+
+/** Scale up hit targets on high resolution mobile devices. */
+@media (resolution >= 200dpi) {
+	:root {
+		font-size: 18px;
+	}
+
+	.text-sm {
+		/** Ensure minimum font size of 16px. */
+		font-size: 0.9rem;
+	}
+}
+
+body,
+.sbdocs.sbdocs-preview .docs-story {
+	@apply bg-white dark:bg-neutral-900;
+
+	color-scheme: dark light;
+}
