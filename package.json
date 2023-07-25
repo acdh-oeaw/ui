@@ -1,0 +1,49 @@
+{
+	"private": true,
+	"license": "MIT",
+	"type": "module",
+	"packageManager": "pnpm@10.12.3",
+	"scripts": {
+		"build": "turbo build",
+		"changeset:add": "changeset add",
+		"changeset:status": "changeset status --verbose",
+		"ci:release": "changeset publish",
+		"ci:version": "changeset version && prettier \"**/CHANGELOG.md\" --write",
+		"dev": "turbo dev",
+		"format:check": "prettier . --cache --check",
+		"format:fix": "prettier . --cache --check --write",
+		"lint:check": "turbo lint:check",
+		"lint:fix": "turbo lint:fix",
+		"preinstall": "npx only-allow pnpm",
+		"prepare": "run-s setup",
+		"setup": "is-ci || simple-git-hooks",
+		"test": "turbo test",
+		"types:check": "turbo types:check",
+		"validate": "turbo format:check lint:check types:check test"
+	},
+	"devDependencies": {
+		"@acdh-oeaw/commitlint-config": "^2.0.0",
+		"@acdh-oeaw/prettier-config": "catalog:",
+		"@changesets/changelog-github": "^0.5.1",
+		"@changesets/cli": "^2.29.5",
+		"@commitlint/cli": "^19.8.1",
+		"is-ci": "^4.1.0",
+		"lint-staged": "^16.1.2",
+		"npm-run-all2": "catalog:",
+		"prettier": "catalog:",
+		"simple-git-hooks": "^2.13.0",
+		"turbo": "^2.5.4",
+		"typescript": "catalog:"
+	},
+	"commitlint": {
+		"extends": "@acdh-oeaw/commitlint-config"
+	},
+	"lint-staged": {
+		"*": "prettier --cache --ignore-unknown --write"
+	},
+	"simple-git-hooks": {
+		"commit-msg": "pnpm exec commitlint --edit",
+		"pre-commit": "pnpm exec lint-staged",
+		"pre-push": "pnpm run validate"
+	}
+}

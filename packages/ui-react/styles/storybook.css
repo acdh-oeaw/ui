@@ -1,0 +1,9 @@
+/*
+ * Storybook.
+ * ============================================================================
+ */
+.docs-story {
+	background-color: var(--color-background-base);
+	color: var(--color-text-strong);
+	font-family: var(--font-body);
+}

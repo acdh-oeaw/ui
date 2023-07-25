@@ -1,0 +1,98 @@
+{
+	"name": "@acdh-oeaw/ui-react",
+	"version": "0.0.0",
+	"license": "MIT",
+	"type": "module",
+	"exports": {
+		".": "./dist/index.js",
+		"./styles": "./dist/index.css"
+	},
+	"files": [
+		"dist"
+	],
+	"sideEffects": false,
+	"scripts": {
+		"build": "tsdown",
+		"check:package": "pnpx @arethetypeswrong/cli --pack --profile esm-only .",
+		"format:check": "prettier . --cache --check",
+		"format:fix": "prettier . --cache --write",
+		"lint:check": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"prepublishOnly": "run-s validate build check:package",
+		"registry:build": "npx shadcn@latest build",
+		"storybook:build": "storybook build",
+		"storybook:dev": "storybook dev --no-open --port 6006",
+		"storybook:docs:build": "storybook build --docs",
+		"storybook:docs:dev": "storybook dev --docs --no-open --port 6006",
+		"test": "vitest run --project=storybook",
+		"test:watch": "vitest watch --project=storybook",
+		"types:check": "tsc --noEmit"
+	},
+	"peerDependencies": {
+		"@acdh-oeaw/style-variants": "*",
+		"lucide-react": "*",
+		"react-aria-components": "*",
+		"tailwindcss-react-aria-components": "*"
+	},
+	"dependencies": {
+		"@acdh-oeaw/style-variants": "catalog:",
+		"clsx": "catalog:",
+		"lucide-react": "catalog:",
+		"react": "catalog:",
+		"react-aria-components": "catalog:",
+		"react-dom": "catalog:"
+	},
+	"devDependencies": {
+		"@acdh-oeaw/eslint-config": "catalog:",
+		"@acdh-oeaw/eslint-config-react": "catalog:",
+		"@acdh-oeaw/eslint-config-storybook": "catalog:",
+		"@acdh-oeaw/eslint-config-tailwindcss": "catalog:",
+		"@acdh-oeaw/prettier-config": "catalog:",
+		"@acdh-oeaw/stylelint-config": "catalog:",
+		"@acdh-oeaw/tsconfig": "catalog:",
+		"@chromatic-com/storybook": "catalog:",
+		"@faker-js/faker": "catalog:",
+		"@fontsource-variable/inter": "catalog:",
+		"@fontsource-variable/ubuntu-sans": "catalog:",
+		"@storybook/addon-a11y": "catalog:",
+		"@storybook/addon-docs": "catalog:",
+		"@storybook/addon-onboarding": "catalog:",
+		"@storybook/addon-themes": "catalog:",
+		"@storybook/addon-vitest": "catalog:",
+		"@storybook/react-vite": "catalog:",
+		"@tailwindcss/vite": "catalog:",
+		"@types/node": "catalog:",
+		"@types/react": "catalog:",
+		"@types/react-dom": "catalog:",
+		"@vitejs/plugin-react-swc": "catalog:",
+		"@vitest/browser": "catalog:",
+		"@vitest/coverage-v8": "catalog:",
+		"eslint": "catalog:",
+		"eslint-config-flat-gitignore": "catalog:",
+		"eslint-config-turbo": "catalog:",
+		"globals": "catalog:",
+		"playwright": "catalog:",
+		"prettier": "catalog:",
+		"storybook": "catalog:",
+		"stylelint": "catalog:",
+		"tailwindcss": "catalog:",
+		"tailwindcss-react-aria-components": "catalog:",
+		"tsdown": "catalog:",
+		"tw-animate-css": "catalog:",
+		"typescript": "catalog:",
+		"typescript-eslint": "catalog:",
+		"vite": "catalog:",
+		"vite-tsconfig-paths": "catalog:",
+		"vitest": "catalog:"
+	},
+	"lint-staged": {
+		"*.@(ts|tsx)": [
+			"eslint --cache --fix",
+			"prettier --cache --write"
+		],
+		"*.!(ts|tsx)": "prettier --cache --ignore-unknown --write"
+	},
+	"stylelint": {
+		"extends": "@acdh-oeaw/stylelint-config"
+	}
+}

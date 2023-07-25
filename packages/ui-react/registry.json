@@ -1,0 +1,62 @@
+{
+	"$schema": "https://ui.shadcn.com/schema/registry.json",
+	"name": "ACDH components (react)",
+	"homepage": "http://localhost:3000",
+	"items": [
+		{
+			"name": "style-purple",
+			"type": "registry:style",
+			"title": "Purple style",
+			"description": "Design token overrides for a purple style.",
+			"files": [],
+			"css": {
+				"@layer base": {
+					":root": {
+						"--_color-brand-light-1000": "oklch(55.8% 0.288 302.32deg)",
+						"--_color-brand-light-800": "oklch(55.8% 0.288 302.32deg / 80%)",
+						"--_color-brand-light-200": "oklch(55.8% 0.288 302.32deg / 20%)",
+						"--_color-brand-light-50": "oklch(55.8% 0.288 302.32deg / 5%)",
+
+						"--_color-brand-dark-1000": "oklch(71.4% 0.203 305.50deg)",
+						"--_color-brand-dark-800": "oklch(71.4% 0.203 305.50deg / 80%)",
+						"--_color-brand-dark-200": "oklch(71.4% 0.203 305.50deg / 20%)",
+						"--_color-brand-dark-50": "oklch(71.4% 0.203 305.50deg / 5%)"
+					}
+				}
+			}
+		},
+		{
+			"name": "theme",
+			"type": "registry:theme",
+			"title": "Global theme",
+			"description": "Shared design tokens as css custom properties and tailwind css classes.",
+			"dependencies": ["tailwindcss-react-aria-components", "tw-animate-css"],
+			"css": {
+				"@import \"tw-animate-css\"": {},
+				"@plugin \"tailwindcss-react-aria-components\"": {},
+				"@custom-variant dark (:where([data-ui-color-scheme=\"dark\"], [data-ui-color-scheme=\"dark\"] *))": {}
+			},
+			"files": [
+				{
+					"path": "styles/index.css",
+					"type": "registry:file",
+					"target": "styles/theme.css"
+				}
+			]
+		},
+		{
+			"name": "button",
+			"type": "registry:ui",
+			"title": "Button",
+			"description": "Allows users to take actions with a single click or tap.",
+			"dependencies": ["@acdh-oeaw/style-variants", "react-aria-components"],
+			"registryDependencies": ["http://localhost:3000/r/theme.json"],
+			"files": [
+				{
+					"path": "components/primitives/button.tsx",
+					"type": "registry:ui"
+				}
+			]
+		}
+	]
+}
