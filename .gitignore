@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build output
+dist/
+
+# logs
+*.logs
+
+# caches
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+
+# misc
+.DS_Store
+
+# playwright
+test-results/
+playwright-report/
+playwright/.cache/
+
+# storybook
+storybook-static/

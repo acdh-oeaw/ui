@@ -1,0 +1,46 @@
+{
+	"private": true,
+	"license": "MIT",
+	"type": "module",
+	"packageManager": "pnpm@8.7.4",
+	"scripts": {
+		"build": "pnpm --recursive build",
+		"changeset:add": "changeset add",
+		"changeset:status": "changeset status --verbose",
+		"ci:release": "changeset publish",
+		"format:check": "prettier . --cache --check --ignore-path ./.gitignore",
+		"format:fix": "pnpm run format:check --write",
+		"lint:check": "pnpm --recursive lint:check",
+		"lint:fix": "pnpm --recursive lint:fix",
+		"preinstall": "npx only-allow pnpm",
+		"prepare": "run-s setup",
+		"setup": "is-ci || simple-git-hooks",
+		"test": "pnpm --recursive test",
+		"types:check": "pnpm --recursive types:check",
+		"validate": "run-p format:check lint:check types:check test"
+	},
+	"devDependencies": {
+		"@acdh-oeaw/commitlint-config": "^1.0.0",
+		"@acdh-oeaw/prettier-config": "^1.0.1",
+		"@changesets/changelog-github": "^0.4.8",
+		"@changesets/cli": "^2.26.2",
+		"@commitlint/cli": "^17.7.1",
+		"is-ci": "^3.0.1",
+		"lint-staged": "^14.0.1",
+		"npm-run-all2": "^6.0.6",
+		"prettier": "^3.0.3",
+		"simple-git-hooks": "^2.9.0"
+	},
+	"commitlint": {
+		"extends": "@acdh-oeaw/commitlint-config"
+	},
+	"lint-staged": {
+		"*": "prettier --cache --ignore-unknown --write"
+	},
+	"prettier": "@acdh-oeaw/prettier-config",
+	"simple-git-hooks": {
+		"commit-msg": "pnpm exec commitlint --edit",
+		"pre-commit": "pnpm exec lint-staged",
+		"pre-push": "pnpm run validate"
+	}
+}
