@@ -5,3 +5,5 @@ export interface FieldProps {
 	description?: string;
 	errorMessage?: string | ((validation: AriaValidationResult) => string);
 }
+
+// FIXME: should accept ReactNode, not only string

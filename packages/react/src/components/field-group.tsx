@@ -1,3 +1,5 @@
+"use client";
+
 import type { ElementRef } from "react";
 import {
 	composeRenderProps,
@@ -9,27 +11,22 @@ import { type ForwardedRef, forwardRef } from "@/lib/forward-ref";
 import { compose, type VariantProps, variants } from "@/lib/styles";
 import { focusRing } from "@/styles/focus-ring";
 
-/** @internal */
-export const _fieldBorderStyles = {
-	variants: {
-		isFocusWithin: {
-			false: "border-neutral-300 forced-colors:border-[ButtonBorder]",
-			true: "border-neutral-600 forced-colors:border-[Highlight]",
-		},
-		isInvalid: {
-			true: "border-red-600 forced-colors:border-[Mark]",
-		},
-		isDisabled: {
-			true: "border-neutral-200 forced-colors:border-[GrayText]",
-		},
-	},
-};
-
 export const fieldGroupStyles = compose(
 	focusRing,
 	variants({
-		base: "group flex h-9 items-center overflow-hidden rounded-lg border-2 bg-white forced-colors:bg-[Field]",
-		variants: _fieldBorderStyles.variants,
+		base: "group flex h-9 items-center overflow-hidden rounded-md border-2 bg-transparent shadow-sm forced-colors:bg-[Field]",
+		variants: {
+			isFocusWithin: {
+				false: "border-input forced-colors:border-[ButtonBorder]",
+				true: "border-foreground forced-colors:border-[Highlight]",
+			},
+			isInvalid: {
+				true: "border-negative forced-colors:border-[Mark]",
+			},
+			isDisabled: {
+				true: "forced-colors:border-[GrayText]",
+			},
+		},
 	}),
 );
 

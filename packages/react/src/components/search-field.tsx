@@ -1,3 +1,5 @@
+"use client";
+
 import { SearchIcon, XIcon } from "lucide-react";
 import type { ElementRef } from "react";
 import {
@@ -10,8 +12,8 @@ import { Button } from "@/components/button";
 import { FieldDescription } from "@/components/field-description";
 import { FieldError } from "@/components/field-error";
 import { FieldGroup } from "@/components/field-group";
-import { Input } from "@/components/input";
 import { Label } from "@/components/label";
+import { TextInput } from "@/components/text-input";
 import { type ForwardedRef, forwardRef } from "@/lib/forward-ref";
 import { type VariantProps, variants } from "@/lib/styles";
 import type { FieldProps } from "@/types/field";
@@ -47,7 +49,7 @@ export const SearchField = forwardRef(function SearchField(
 					aria-hidden={true}
 					className="ml-2 size-4 shrink-0 text-neutral-500 group-disabled:text-neutral-200 forced-colors:text-[ButtonText] forced-colors:group-disabled:text-[GrayText]"
 				/>
-				<Input className="[&::-webkit-search-cancel-button]:hidden" />
+				<TextInput className="[&::-webkit-search-cancel-button]:hidden" />
 				<Button className="mr-1 w-6 group-empty:invisible" variant="icon">
 					<XIcon aria-hidden={true} className="size-4 shrink-0" />
 				</Button>

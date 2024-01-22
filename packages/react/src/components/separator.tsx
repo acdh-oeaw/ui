@@ -1,3 +1,5 @@
+"use client";
+
 import type { ElementRef } from "react";
 import {
 	Separator as AriaSeparator,

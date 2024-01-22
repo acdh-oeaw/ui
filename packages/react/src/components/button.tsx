@@ -1,3 +1,5 @@
+"use client";
+
 import type { ElementRef } from "react";
 import {
 	Button as AriaButton,
@@ -12,19 +14,31 @@ import { focusRing } from "@/styles/focus-ring";
 export const buttonStyles = compose(
 	focusRing,
 	variants({
-		base: "cursor-default rounded-lg border border-black/10 px-5 py-2 text-center text-sm shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] transition",
+		base: "inline-flex cursor-default items-center justify-center gap-2 whitespace-nowrap rounded-md px-5 py-2 text-center text-sm font-medium transition",
 		variants: {
+			size: {
+				sm: "h-8 px-3 text-xs",
+				md: "h-9 px-4 py-2",
+				lg: "h-10 px-8",
+			},
 			variant: {
-				primary: "bg-blue-600 text-white hover:bg-blue-700 pressed:bg-blue-800",
-				secondary: "bg-neutral-100 text-neutral-800 hover:bg-neutral-200 pressed:bg-neutral-300",
-				destructive: "bg-red-700 text-white hover:bg-red-800 pressed:bg-red-900",
-				icon: "flex items-center justify-center border-0 p-1 text-neutral-600 hover:bg-black/[5%] pressed:bg-black/10 disabled:bg-transparent",
+				primary:
+					"bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 pressed:bg-primary/80",
+				secondary:
+					"bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 pressed:bg-secondary/70",
+				negative:
+					"bg-negative text-negative-foreground shadow-sm hover:bg-negative/90 pressed:bg-negative/80",
+				outline:
+					"border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground pressed:bg-accent/90",
+				ghost: "hover:bg-accent hover:text-accent-foreground pressed:bg-accent/90",
+				link: "text-primary underline-offset-4 hover:underline",
 			},
 			isDisabled: {
-				true: "border-black/5 bg-neutral-100 text-neutral-300 forced-colors:text-[GrayText]",
+				true: "disabled:opacity-50 forced-colors:text-[GrayText]",
 			},
 		},
 		defaultVariants: {
+			size: "md",
 			variant: "primary",
 		},
 	}),

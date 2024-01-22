@@ -7,7 +7,7 @@ export const config: Pick<Spec, "rules"> = {
 	rules: [
 		{
 			id: "aria-hidden-focus",
-			selector: 'body *:not([data-a11y-ignore="aria-hidden-focus"])',
+			selector: '[aria-hidden="true"]:not([data-a11y-ignore="aria-hidden-focus"])',
 		},
 	],
 };

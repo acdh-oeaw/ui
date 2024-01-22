@@ -1,17 +1,21 @@
+"use client";
+
 import type { ElementRef } from "react";
 import {
 	composeRenderProps,
 	OverlayArrow as AriaPopoverArrow,
 	type OverlayArrowProps as AriaPopoverArrowProps,
 	Popover as AriaPopover,
+	PopoverContext as AriaPopoverContext,
 	type PopoverProps as AriaPopoverProps,
+	useSlottedContext,
 } from "react-aria-components";
 
 import { type ForwardedRef, forwardRef } from "@/lib/forward-ref";
 import { type VariantProps, variants } from "@/lib/styles";
 
 export const popoverStyles = variants({
-	base: "rounded-xl border border-black/10 bg-white bg-clip-padding text-neutral-700 shadow-2xl forced-colors:bg-[Canvas]",
+	base: "rounded-md border border-background/10 bg-popover bg-clip-padding text-popover-foreground shadow-md forced-colors:bg-[Canvas]",
 	variants: {
 		isEntering: {
 			true: "duration-200 ease-out animate-in fade-in placement-left:slide-in-from-right-1 placement-right:slide-in-from-left-1 placement-top:slide-in-from-bottom-1 placement-bottom:slide-in-from-top-1",
@@ -32,10 +36,13 @@ export const Popover = forwardRef(function Popover(
 ) {
 	const { children, className, ...rest } = props;
 
+	const popoverContext = useSlottedContext(AriaPopoverContext);
+	const offset = popoverContext?.trigger === "SubmenuTrigger" ? 2 : 8;
+
 	return (
 		<AriaPopover
 			ref={forwardedRef}
-			offset={8}
+			offset={offset}
 			{...rest}
 			className={composeRenderProps(className, (className, renderProps) => {
 				return popoverStyles({ ...renderProps, className });
@@ -47,7 +54,7 @@ export const Popover = forwardRef(function Popover(
 });
 
 export const popoverArrowStyles = variants({
-	base: "block fill-white stroke-black/10 stroke-1 group-placement-left:-rotate-90 group-placement-right:rotate-90 group-placement-bottom:rotate-180 forced-colors:fill-[Canvas] forced-colors:stroke-[ButtonBorder]",
+	base: "block fill-background stroke-black/10 stroke-1 group-placement-left:-rotate-90 group-placement-right:rotate-90 group-placement-bottom:rotate-180 forced-colors:fill-[Canvas] forced-colors:stroke-[ButtonBorder]",
 });
 
 export type PopoverArrowStyles = VariantProps<typeof popoverArrowStyles>;

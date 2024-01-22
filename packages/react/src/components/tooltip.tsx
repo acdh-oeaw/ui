@@ -1,3 +1,5 @@
+"use client";
+
 import type { ElementRef } from "react";
 import {
 	composeRenderProps,
@@ -5,6 +7,7 @@ import {
 	type OverlayArrowProps as AriaTooltipArrowProps,
 	Tooltip as AriaTooltip,
 	type TooltipProps as AriaTooltipProps,
+	TooltipTrigger as AriaTooltipTrigger,
 } from "react-aria-components";
 
 import { type ForwardedRef, forwardRef } from "@/lib/forward-ref";
@@ -70,3 +73,5 @@ export const TooltipArrow = forwardRef(function TooltipArrow(
 		</AriaTooltipArrow>
 	);
 });
+
+export { AriaTooltipTrigger as TooltipTrigger };

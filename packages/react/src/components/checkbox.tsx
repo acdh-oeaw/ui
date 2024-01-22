@@ -1,3 +1,5 @@
+"use client";
+
 import { CheckIcon, MinusIcon } from "lucide-react";
 import { type ElementRef, Fragment, type ReactNode } from "react";
 import {

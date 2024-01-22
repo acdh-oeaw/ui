@@ -1,3 +1,5 @@
+"use client";
+
 import type { ElementRef } from "react";
 import {
 	composeRenderProps,
@@ -9,18 +11,18 @@ import { type ForwardedRef, forwardRef } from "@/lib/forward-ref";
 import { type VariantProps, variants } from "@/lib/styles";
 
 export const inputStyles = variants({
-	base: "min-w-0 flex-1 bg-white px-2 py-1.5 text-sm text-neutral-800 outline outline-0 disabled:text-neutral-200",
+	base: "h-9 min-w-0 flex-1 bg-transparent px-3 py-1.5 text-sm outline outline-0 transition placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50",
 });
 
 export type InputStyles = VariantProps<typeof inputStyles>;
 
-export interface InputProps extends AriaInputProps, InputStyles {}
+export interface InputProps extends Omit<AriaInputProps, "children">, InputStyles {}
 
 export const Input = forwardRef(function Input(
 	props: InputProps,
 	forwardedRef: ForwardedRef<ElementRef<typeof AriaInput>>,
 ) {
-	const { children, className, ...rest } = props;
+	const { className, ...rest } = props;
 
 	return (
 		<AriaInput
@@ -29,8 +31,8 @@ export const Input = forwardRef(function Input(
 			className={composeRenderProps(className, (className, renderProps) => {
 				return inputStyles({ ...renderProps, className });
 			})}
-		>
-			{children}
-		</AriaInput>
+		/>
 	);
 });
+
+// "flex w-full file:border-0 file:bg-transparent file:text-sm file:font-medium",

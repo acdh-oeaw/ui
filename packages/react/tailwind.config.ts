@@ -1,3 +1,4 @@
+// import { createPreset as createDesignTokenPreset } from "@acdh-oeaw/tailwindcss-preset";
 import type { Config } from "tailwindcss";
 import createPlugin from "tailwindcss/plugin";
 import animatePlugin from "tailwindcss-animate";
@@ -32,7 +33,7 @@ const shadcnPlugin = createPlugin(
 				"--negative-foreground": "0 0% 98%",
 
 				"--border": "0 0% 89.8%",
-				"--input": "0 0% 89.8%",
+				"--input": "0 0% 83.1%",
 				"--focus-indicator": "0 0% 3.9%",
 
 				"--radius": "0.5rem",
@@ -63,7 +64,7 @@ const shadcnPlugin = createPlugin(
 				"--negative-foreground": "0 0% 98%",
 
 				"--border": "0 0% 14.9%",
-				"--input": "0 0% 14.9%",
+				"--input": "0 0% 32.2%",
 				"--focus-indicator": "0 0% 83.1%",
 			},
 			"*": {
@@ -128,11 +129,11 @@ const config = {
 	content: ["./src/**/*.@(css|ts|tsx)"],
 	darkMode: ["selector", '[data-ui-color-scheme="dark"]'],
 	plugins: [animatePlugin, reactAriaComponentsPlugin, shadcnPlugin],
+	// presets: [designTokensPreset],
 	theme: {
 		extend: {
 			fontFamily: {
-				body: ["var(--font-body, ui-sans-serif)", "system-ui", "sans-serif"],
-				heading: ["var(--font-heading, var(--font-body))"],
+				body: "var(--font-body, ui-sans-serif), system-ui, sans-serif",
 			},
 		},
 	},

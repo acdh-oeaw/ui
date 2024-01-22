@@ -1,3 +1,5 @@
+"use client";
+
 import { ChevronDownIcon } from "lucide-react";
 import type { ElementRef, ReactNode } from "react";
 import {
@@ -7,13 +9,19 @@ import {
 } from "react-aria-components";
 
 import { Button } from "@/components/button";
+import {
+	DropdownItem,
+	type DropdownItemProps,
+	DropdownSection,
+	type DropdownSectionProps,
+} from "@/components/dropdown";
 import { FieldDescription } from "@/components/field-description";
 import { FieldError } from "@/components/field-error";
 import { FieldGroup } from "@/components/field-group";
-import { Input } from "@/components/input";
 import { Label } from "@/components/label";
-import { DropdownItem, DropdownSection, Listbox } from "@/components/listbox";
+import { Listbox } from "@/components/listbox";
 import { Popover } from "@/components/popover";
+import { TextInput } from "@/components/text-input";
 import { type ForwardedRef, forwardRef } from "@/lib/forward-ref";
 import { type VariantProps, variants } from "@/lib/styles";
 import type { FieldProps } from "@/types/field";
@@ -47,7 +55,7 @@ export const Combobox = forwardRef(function Combobox<T extends object>(
 		>
 			{label != null ? <Label>{label}</Label> : null}
 			<FieldGroup>
-				<Input />
+				<TextInput />
 				<Button className="mr-1 w-6 rounded outline-offset-0" variant="icon">
 					<ChevronDownIcon aria-hidden={true} className="size-4 shrink-0" />
 				</Button>
@@ -66,6 +74,10 @@ export const Combobox = forwardRef(function Combobox<T extends object>(
 	);
 });
 
+export interface ComboboxItemProps<T extends object> extends DropdownItemProps<T> {}
+
 export const ComboboxItem = DropdownItem;
+
+export interface ComboboxSectionProps<T extends object> extends DropdownSectionProps<T> {}
 
 export const ComboboxSection = DropdownSection;

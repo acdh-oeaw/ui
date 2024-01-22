@@ -1,3 +1,5 @@
+"use client";
+
 import type { ElementRef } from "react";
 import { Form as AriaForm, type FormProps as AriaFormProps } from "react-aria-components";
 

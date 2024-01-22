@@ -1,3 +1,5 @@
+"use client";
+
 import type { ElementRef } from "react";
 import {
 	Text as AriaFieldDescription,
@@ -8,7 +10,7 @@ import { type ForwardedRef, forwardRef } from "@/lib/forward-ref";
 import { type VariantProps, variants } from "@/lib/styles";
 
 export const fieldDescriptionStyles = variants({
-	base: "text-sm text-neutral-600",
+	base: "text-xs text-muted-foreground",
 });
 
 export type FieldDescriptionStyles = VariantProps<typeof fieldDescriptionStyles>;
