@@ -1,3 +1,5 @@
+"use client";
+
 import type { ElementRef } from "react";
 import {
 	Text as AriaFieldDescription,
@@ -8,12 +10,18 @@ import { type ForwardedRef, forwardRef } from "@/lib/forward-ref";
 import { type VariantProps, variants } from "@/lib/styles";
 
 export const fieldDescriptionStyles = variants({
-	base: "text-sm text-neutral-600",
+	base: [
+		"transition",
+		"text-xs leading-normal text-neutral-500 dark:text-neutral-400",
+		"disabled:opacity-50",
+	],
 });
 
 export type FieldDescriptionStyles = VariantProps<typeof fieldDescriptionStyles>;
 
-export interface FieldDescriptionProps extends AriaFieldDescriptionProps, FieldDescriptionStyles {}
+export interface FieldDescriptionProps
+	extends Omit<AriaFieldDescriptionProps, "slot">,
+		FieldDescriptionStyles {}
 
 export const FieldDescription = forwardRef(function FieldDescription(
 	props: FieldDescriptionProps,

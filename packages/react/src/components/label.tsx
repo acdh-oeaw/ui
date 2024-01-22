@@ -1,3 +1,5 @@
+"use client";
+
 import type { ElementRef } from "react";
 import { Label as AriaLabel, type LabelProps as AriaLabelProps } from "react-aria-components";
 
@@ -5,7 +7,11 @@ import { type ForwardedRef, forwardRef } from "@/lib/forward-ref";
 import { type VariantProps, variants } from "@/lib/styles";
 
 export const labelStyles = variants({
-	base: "w-fit cursor-default text-sm font-medium text-neutral-500",
+	base: [
+		"select-none transition",
+		"text-sm font-medium leading-normal text-neutral-950 dark:text-neutral-0",
+		"disabled:opacity-50",
+	],
 });
 
 export type LabelStyles = VariantProps<typeof labelStyles>;

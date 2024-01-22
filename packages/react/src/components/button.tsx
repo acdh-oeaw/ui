@@ -1,3 +1,5 @@
+"use client";
+
 import type { ElementRef } from "react";
 import {
 	Button as AriaButton,
@@ -5,30 +7,52 @@ import {
 	composeRenderProps,
 } from "react-aria-components";
 
+import { TouchTarget } from "@/components/touch-target";
 import { type ForwardedRef, forwardRef } from "@/lib/forward-ref";
-import { compose, type VariantProps, variants } from "@/lib/styles";
-import { focusRing } from "@/styles/focus-ring";
+import { type VariantProps, variants } from "@/lib/styles";
 
-export const buttonStyles = compose(
-	focusRing,
-	variants({
-		base: "cursor-default rounded-lg border border-black/10 px-5 py-2 text-center text-sm shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)] transition",
-		variants: {
-			variant: {
-				primary: "bg-blue-600 text-white hover:bg-blue-700 pressed:bg-blue-800",
-				secondary: "bg-neutral-100 text-neutral-800 hover:bg-neutral-200 pressed:bg-neutral-300",
-				destructive: "bg-red-700 text-white hover:bg-red-800 pressed:bg-red-900",
-				icon: "flex items-center justify-center border-0 p-1 text-neutral-600 hover:bg-black/[5%] pressed:bg-black/10 disabled:bg-transparent",
-			},
-			isDisabled: {
-				true: "border-black/5 bg-neutral-100 text-neutral-300 forced-colors:text-[GrayText]",
-			},
+export const buttonStyles = variants({
+	base: [
+		"inline-flex cursor-default items-center justify-center gap-x-2 whitespace-nowrap transition",
+		"rounded-md px-3 py-1.5",
+		"text-sm font-medium leading-normal",
+		"border",
+
+		"disabled:opacity-50",
+	],
+	variants: {
+		// size: {
+		// 	sm: "",
+		// 	md: "",
+		// },
+		variant: {
+			solid: [
+				"dark:border-neutral-0/5 border-neutral-950/90",
+				"text-neutral-0 bg-neutral-900 dark:bg-neutral-600",
+				"hover:bg-neutral-900/90 dark:hover:bg-neutral-600/90", // TODO: overlay layer hover:bg-white/5 darh:hover:bg-white/10
+				"shadow-sm dark:shadow-none",
+				"disabled:shadow-none",
+			],
+			// negative: [],
+			// positive: [],
+			outline: [
+				"dark:border-neutral-0/15 border-neutral-950/10",
+				"pressed:bg-neutral-950/[2.5%] dark:hover:bg-neutral-0/5 dark:pressed:bg-neutral-0/5 bg-transparent hover:bg-neutral-950/[2.5%]",
+				"dark:text-neutral-0 text-neutral-950",
+			],
+			plain: [
+				"border-transparent",
+				"pressed:bg-neutral-950/5 hover:bg-neutral-950/5",
+				"dark:text-neutral-0 text-neutral-950",
+				"dark:hover:bg-neutral-0/10 dark:pressed:bg-neutral-0/10",
+			],
 		},
-		defaultVariants: {
-			variant: "primary",
-		},
-	}),
-);
+	},
+	defaultVariants: {
+		// size: "md",
+		variant: "solid",
+	},
+});
 
 export type ButtonStyles = VariantProps<typeof buttonStyles>;
 
@@ -48,7 +72,9 @@ export const Button = forwardRef(function Button(
 				return buttonStyles({ ...renderProps, className, variant });
 			})}
 		>
-			{children}
+			{composeRenderProps(children, (children, _renderProps) => {
+				return <TouchTarget>{children}</TouchTarget>;
+			})}
 		</AriaButton>
 	);
 });

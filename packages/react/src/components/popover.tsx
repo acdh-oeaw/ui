@@ -11,13 +11,15 @@ import { type ForwardedRef, forwardRef } from "@/lib/forward-ref";
 import { type VariantProps, variants } from "@/lib/styles";
 
 export const popoverStyles = variants({
-	base: "rounded-xl border border-black/10 bg-white bg-clip-padding text-neutral-700 shadow-2xl forced-colors:bg-[Canvas]",
+	base: [
+		"placement-bottom:mt-2 placement-top:mb-2 group w-[280px] rounded-lg bg-white ring-1 ring-black/10 drop-shadow-lg",
+	],
 	variants: {
 		isEntering: {
-			true: "duration-200 ease-out animate-in fade-in placement-left:slide-in-from-right-1 placement-right:slide-in-from-left-1 placement-top:slide-in-from-bottom-1 placement-bottom:slide-in-from-top-1",
+			true: "animate-in fade-in placement-bottom:slide-in-from-top-1 placement-top:slide-in-from-bottom-1 duration-200 ease-out",
 		},
 		isExiting: {
-			true: "duration-150 ease-in animate-out fade-out placement-left:slide-out-to-right-1 placement-right:slide-out-to-left-1 placement-top:slide-out-to-bottom-1 placement-bottom:slide-out-to-top-1",
+			true: "animate-out fade-out placement-bottom:slide-out-to-top-1 placement-top:slide-out-to-bottom-1 duration-150 ease-in",
 		},
 	},
 });
@@ -35,7 +37,6 @@ export const Popover = forwardRef(function Popover(
 	return (
 		<AriaPopover
 			ref={forwardedRef}
-			offset={8}
 			{...rest}
 			className={composeRenderProps(className, (className, renderProps) => {
 				return popoverStyles({ ...renderProps, className });
@@ -47,14 +48,12 @@ export const Popover = forwardRef(function Popover(
 });
 
 export const popoverArrowStyles = variants({
-	base: "block fill-white stroke-black/10 stroke-1 group-placement-left:-rotate-90 group-placement-right:rotate-90 group-placement-bottom:rotate-180 forced-colors:fill-[Canvas] forced-colors:stroke-[ButtonBorder]",
+	base: [],
 });
 
 export type PopoverArrowStyles = VariantProps<typeof popoverArrowStyles>;
 
-export interface PopoverArrowProps
-	extends Omit<AriaPopoverArrowProps, "children">,
-		PopoverArrowStyles {}
+export interface PopoverArrowProps extends AriaPopoverArrowProps, PopoverArrowStyles {}
 
 export const PopoverArrow = forwardRef(function PopoverArrow(
 	props: PopoverArrowProps,
@@ -63,9 +62,20 @@ export const PopoverArrow = forwardRef(function PopoverArrow(
 	const { className, ...rest } = props;
 
 	return (
-		<AriaPopoverArrow ref={forwardedRef} {...rest} className="group">
-			<svg width={12} height={12} viewBox="0 0 12 12" className={popoverArrowStyles({ className })}>
-				<path d="M0 0 L6 6 L12 0" />
+		<AriaPopoverArrow
+			ref={forwardedRef}
+			{...rest}
+			className={composeRenderProps(className, (className, renderProps) => {
+				return popoverArrowStyles({ ...renderProps, className });
+			})}
+		>
+			<svg
+				className="group-placement-bottom:rotate-180 fill-neutral-0 block size-4"
+				height={12}
+				viewBox="0 0 12 12"
+				width={12}
+			>
+				<path d="M0 0L6 6L12 0" />
 			</svg>
 		</AriaPopoverArrow>
 	);

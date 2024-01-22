@@ -1,0 +1,13 @@
+@import url("@fontsource-variable/inter/standard.css");
+
+:root {
+	--font-body: "Inter Variable";
+}
+
+body,
+#storybook-docs,
+.sbdocs.sbdocs-preview .docs-story {
+	/* @apply bg-neutral-0 text-neutral-600 dark:text-neutral-400 dark:bg-neutral-900 font-body; */
+
+	/* color-scheme: light dark; */
+}

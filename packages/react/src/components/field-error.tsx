@@ -1,3 +1,5 @@
+"use client";
+
 import type { ElementRef } from "react";
 import {
 	composeRenderProps,
@@ -9,7 +11,11 @@ import { type ForwardedRef, forwardRef } from "@/lib/forward-ref";
 import { type VariantProps, variants } from "@/lib/styles";
 
 export const fieldErrorStyles = variants({
-	base: "text-sm text-red-600 forced-colors:text-[Mark]",
+	base: [
+		"transition",
+		"text-xs leading-normal text-negative-600 dark:text-negative-500",
+		"disabled:opacity-50",
+	],
 });
 
 export type FieldErrorStyles = VariantProps<typeof fieldErrorStyles>;

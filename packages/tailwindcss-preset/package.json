@@ -1,0 +1,71 @@
+{
+	"name": "@acdh-oeaw/tailwindcss-preset",
+	"version": "0.0.22",
+	"license": "MIT",
+	"type": "module",
+	"main": "./dist/index.js",
+	"exports": {
+		".": "./dist/index.js"
+	},
+	"files": [
+		"dist",
+		"src"
+	],
+	"sideEffects": false,
+	"scripts": {
+		"build": "tsup ./src/index.ts",
+		"format:check": "prettier . --cache --check --ignore-path ../../.gitignore",
+		"format:fix": "pnpm run format:check --write",
+		"lint:check": "run-p --continue-on-error \"lint:*:check\"",
+		"lint:fix": "run-p --continue-on-error \"lint:*:fix\"",
+		"lint:code:check": "eslint . --cache --ignore-path ../../.gitignore",
+		"lint:code:fix": "pnpm run lint:code:check --fix",
+		"lint:styles:check": "stylelint \"./**/*.css\" --cache --ignore-path ../../.gitignore",
+		"lint:styles:fix": "pnpm run lint:styles:check --fix",
+		"types:check": "tsc --noEmit"
+	},
+	"peerDependencies": {
+		"@tailwindcss/typography": "^0.5.0",
+		"tailwindcss": "^3.4.0",
+		"tailwindcss-animate": "^1.0.0"
+	},
+	"devDependencies": {
+		"@acdh-oeaw/eslint-config": "^1.0.6",
+		"@acdh-oeaw/stylelint-config": "^2.0.1",
+		"@acdh-oeaw/tsconfig-lib": "^1.0.1",
+		"@tailwindcss/typography": "^0.5.10",
+		"eslint": "^8.57.0",
+		"eslint-plugin-tailwindcss": "^3.14.3",
+		"stylelint": "^16.2.1",
+		"tailwindcss": "^3.4.1",
+		"tailwindcss-animate": "^1.0.7",
+		"tsup": "^8.0.2",
+		"typescript": "^5.3.3"
+	},
+	"eslintConfig": {
+		"extends": [
+			"@acdh-oeaw/eslint-config",
+			"@acdh-oeaw/eslint-config/strict",
+			"plugin:eslint-plugin-tailwindcss/recommended"
+		]
+	},
+	"lint-staged": {
+		"*.@(ts|tsx)": [
+			"eslint --cache --fix",
+			"prettier --cache --write"
+		],
+		"*.@(css)": [
+			"stylelint --cache --fix",
+			"prettier --cache --write"
+		],
+		"*.!(css|ts|tsx)": "prettier --cache --ignore-unknown --write"
+	},
+	"postcss": {
+		"plugins": {
+			"tailwindcss": {}
+		}
+	},
+	"stylelint": {
+		"extends": "@acdh-oeaw/stylelint-config"
+	}
+}

@@ -1,3 +1,5 @@
+"use client";
+
 import type { ElementRef } from "react";
 import { Form as AriaForm, type FormProps as AriaFormProps } from "react-aria-components";
 
@@ -5,7 +7,7 @@ import { type ForwardedRef, forwardRef } from "@/lib/forward-ref";
 import { type VariantProps, variants } from "@/lib/styles";
 
 export const formStyles = variants({
-	base: "flex flex-col gap-4",
+	base: [],
 });
 
 export type FormStyles = VariantProps<typeof formStyles>;

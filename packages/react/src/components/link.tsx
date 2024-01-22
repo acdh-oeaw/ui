@@ -1,3 +1,5 @@
+"use client";
+
 import type { ElementRef } from "react";
 import {
 	composeRenderProps,
@@ -5,26 +7,17 @@ import {
 	type LinkProps as AriaLinkProps,
 } from "react-aria-components";
 
+import { TouchTarget } from "@/components/touch-target";
 import { type ForwardedRef, forwardRef } from "@/lib/forward-ref";
-import { compose, type VariantProps, variants } from "@/lib/styles";
-import { focusRing } from "@/styles/focus-ring";
+import { type VariantProps, variants } from "@/lib/styles";
 
-export const linkStyles = compose(
-	focusRing,
-	variants({
-		base: "rounded underline transition disabled:cursor-default disabled:no-underline forced-colors:disabled:text-[GrayText]",
-		variants: {
-			variant: {
-				primary: "text-blue-600 underline decoration-blue-600/60 hover:decoration-blue-600",
-				secondary:
-					"text-neutral-700 underline decoration-neutral-700/50 hover:decoration-neutral-700",
-			},
-		},
-		defaultVariants: {
-			variant: "primary",
-		},
-	}),
-);
+export const linkStyles = variants({
+	base: [
+		"underline transition",
+		"text-sm leading-normal",
+		"text-neutral-950 decoration-neutral-950/50 underline-offset-4 hover:decoration-neutral-950 dark:text-neutral-0 dark:decoration-neutral-0/50 dark:hover:decoration-neutral-0",
+	],
+});
 
 export type LinkStyles = VariantProps<typeof linkStyles>;
 
@@ -44,7 +37,9 @@ export const Link = forwardRef(function Link(
 				return linkStyles({ ...renderProps, className });
 			})}
 		>
-			{children}
+			{composeRenderProps(children, (children, _renderProps) => {
+				return <TouchTarget>{children}</TouchTarget>;
+			})}
 		</AriaLink>
 	);
 });
