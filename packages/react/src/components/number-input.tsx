@@ -23,7 +23,7 @@ export const NumberInput = forwardRef(function NumberInput(
 
 	// FIXME: increment/decrement buttons
 	return (
-		<Input ref={forwardedRef} {...rest} className={numberInputStyles({ className })} type="number">
+		<Input ref={forwardedRef} {...rest} className={numberInputStyles({ className })}>
 			{children}
 		</Input>
 	);
