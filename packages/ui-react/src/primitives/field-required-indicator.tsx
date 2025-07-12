@@ -12,7 +12,7 @@ export function FieldRequiredIndicator(props: Readonly<FieldRequiredIndicatorPro
 	const { className, ...rest } = props;
 
 	return (
-		<Icon {...rest} className={cn(["scale-75"], className)}>
+		<Icon {...rest} className={cn(["scale-75"], className)} size="line">
 			<AsteriskIcon />
 		</Icon>
 	);

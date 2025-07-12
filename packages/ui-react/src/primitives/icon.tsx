@@ -6,9 +6,10 @@ import type { ReactElement, ReactNode, SVGProps } from "react";
 import { useStylesContext } from "@/src/primitives/styles-context";
 
 export const iconStyles = styles({
-	base: ["inline-grid shrink-0 place-items-center leading-0 *:[svg]:size-full"],
+	base: ["inline-flex shrink-0 *:[svg]:size-full"],
 	variants: {
 		size: {
+			line: ["size-[1lh]"],
 			sm: ["size-4"],
 			md: ["size-4"],
 			lg: ["size-5"],

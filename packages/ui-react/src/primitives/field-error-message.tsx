@@ -12,11 +12,11 @@ export function FieldErrorMessage(props: Readonly<FieldErrorMessageProps>): Reac
 	const { children, className, ...rest } = props;
 
 	return (
-		<FieldError {...rest} className={cn(["inline-flex gap-x-2"], className)}>
+		<FieldError {...rest} className={cn(["inline-flex gap-x-1.5"], className)}>
 			{composeRenderProps(children, (children) => {
 				return (
 					<Fragment>
-						<Icon tone="negative">
+						<Icon size="line" tone="negative">
 							<AlertTriangleIcon />
 						</Icon>
 						{children}

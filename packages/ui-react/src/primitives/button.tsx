@@ -1,7 +1,7 @@
 "use client";
 
 import { type GetVariantProps, styles } from "@acdh-oeaw/style-variants";
-import type { ReactNode } from "react";
+import { type ReactNode, useMemo } from "react";
 import {
 	Button as AriaButton,
 	type ButtonProps as AriaButtonProps,
@@ -91,6 +91,10 @@ export interface ButtonProps extends AriaButtonProps, ButtonStylesProps {}
 export function Button(props: Readonly<ButtonProps>): ReactNode {
 	const { children, className, shape, size, tone, variant, ...rest } = useStylesContext(props);
 
+	const stylesProps = useMemo(() => {
+		return { size, tone };
+	}, [size, tone]);
+
 	return (
 		<AriaButton
 			{...rest}
@@ -99,7 +103,7 @@ export function Button(props: Readonly<ButtonProps>): ReactNode {
 			})}
 		>
 			{composeRenderProps(children, (children) => {
-				return <StylesContext value={{ size, tone }}>{children}</StylesContext>;
+				return <StylesContext value={stylesProps}>{children}</StylesContext>;
 			})}
 		</AriaButton>
 	);

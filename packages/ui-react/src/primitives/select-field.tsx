@@ -1,7 +1,7 @@
 "use client";
 
 import { type GetVariantProps, styles } from "@acdh-oeaw/style-variants";
-import type { ReactNode } from "react";
+import { type ReactNode, useMemo } from "react";
 import {
 	composeRenderProps,
 	Select as AriaSelect,
@@ -35,6 +35,10 @@ export interface SelectFieldProps<T extends object>
 export function SelectField<T extends object>(props: Readonly<SelectFieldProps<T>>): ReactNode {
 	const { children, className, size, ...rest } = useStylesContext(props);
 
+	const stylesProps = useMemo(() => {
+		return { size };
+	}, [size]);
+
 	return (
 		<AriaSelect
 			{...rest}
@@ -44,7 +48,7 @@ export function SelectField<T extends object>(props: Readonly<SelectFieldProps<T
 		>
 			{composeRenderProps(children, (children, renderProps) => {
 				return (
-					<StylesContext value={{ size }}>
+					<StylesContext value={stylesProps}>
 						<FieldContext value={renderProps}>{children}</FieldContext>
 					</StylesContext>
 				);
