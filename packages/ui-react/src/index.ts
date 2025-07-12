@@ -1,3 +1,13 @@
+export { Button } from "@/src/primitives/button";
 export { FieldDescription } from "@/src/primitives/field-description";
 export { FieldErrorMessage } from "@/src/primitives/field-error-message";
 export { FieldLabel } from "@/src/primitives/field-label";
+export { Icon } from "@/src/primitives/icon";
+export { Illustration } from "@/src/primitives/illustration";
+export { ListBox } from "@/src/primitives/list-box";
+export { ListBoxItem } from "@/src/primitives/list-box-item";
+export { Popover } from "@/src/primitives/popover";
+export { ProgressCircle } from "@/src/primitives/progress-circle";
+export { SelectField } from "@/src/primitives/select-field";
+export { SelectTrigger } from "@/src/primitives/select-trigger";
+export { SelectValue } from "@/src/primitives/select-value";
