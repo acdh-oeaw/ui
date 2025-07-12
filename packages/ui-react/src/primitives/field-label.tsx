@@ -2,8 +2,8 @@
 
 import type { ReactNode } from "react";
 
-import { RequiredIcon } from "@/src/components/required-icon";
 import { useFieldContext } from "@/src/primitives/field-context";
+import { FieldRequiredIndicator } from "@/src/primitives/field-required-indicator";
 import { Label, type LabelProps } from "@/src/primitives/label";
 
 export interface FieldLabelProps extends LabelProps {
@@ -11,16 +11,12 @@ export interface FieldLabelProps extends LabelProps {
 }
 
 export function FieldLabel(props: Readonly<FieldLabelProps>): ReactNode {
-	const { children, ...rest } = props;
-
-	const ctx = useFieldContext();
-
-	const isRequired = props.isRequired === true || ctx.isRequired === true;
+	const { children, isRequired, ...rest } = useFieldContext(props);
 
 	return (
 		<Label {...rest}>
 			{children}
-			{isRequired ? <RequiredIcon size="sm" /> : null}
+			{isRequired === true ? <FieldRequiredIndicator /> : null}
 		</Label>
 	);
 }

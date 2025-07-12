@@ -8,11 +8,12 @@ import {
 	composeRenderProps,
 } from "react-aria-components";
 
-/** @interal */
+import { useStylesContext } from "@/src/primitives/styles-context";
+
 export const buttonStyles = styles({
 	base: [
-		"relative isolate inline-flex items-center justify-center rounded-sm border text-center font-strong whitespace-nowrap outline-offset-2 outline-transparent transition",
-		"after:pointer-events-none after:absolute after:-inset-px after:-z-10 after:rounded-[inherit] after:transition",
+		"relative isolate inline-flex items-center rounded-sm border text-center font-strong whitespace-nowrap outline-offset-2 outline-transparent transition",
+		"after:pointer-events-none after:absolute after:-inset-px after:-z-1 after:rounded-[inherit] after:transition",
 		"hover:after:bg-fill-hover",
 		"pressed:after:bg-fill-press",
 		"focus:outline-hidden focus-visible:outline-2 focus-visible:outline-stroke-focus",
@@ -24,7 +25,7 @@ export const buttonStyles = styles({
 		},
 		size: {
 			sm: ["text-sm/5"],
-			md: ["text-sm/5"],
+			md: ["text-base/6"],
 			lg: ["text-base/6"],
 		},
 		tone: {
@@ -67,29 +68,28 @@ export const buttonStyles = styles({
 		},
 	},
 	combinations: [
-		[{ shape: "default", size: "sm" }, "h-9 gap-x-1.5 px-3.5 py-[calc(--spacing(2)-1px)]"],
-		[{ shape: "default", size: "md" }, "h-10 gap-x-1.5 px-4 py-[calc(--spacing(2.5)-1px)]"],
-		[{ shape: "default", size: "lg" }, "h-11 gap-x-1.5 px-4.5 py-[calc(--spacing(2.5)-1px)]"],
+		[{ size: "sm", shape: "default" }, "h-9 gap-x-2 px-3.5"],
+		[{ size: "md", shape: "default" }, "h-10 gap-x-2 px-4"],
+		[{ size: "lg", shape: "default" }, "h-11 gap-x-2 px-4.5"],
 
-		[{ shape: "square", size: "sm" }, "size-9"],
-		[{ shape: "square", size: "md" }, "size-10"],
-		[{ shape: "square", size: "lg" }, "size-11"],
+		[{ size: "sm", shape: "square" }, "size-9"],
+		[{ size: "md", shape: "square" }, "size-10"],
+		[{ size: "lg", shape: "square" }, "size-11"],
 	],
 	defaults: {
 		shape: "default",
 		size: "md",
-		tone: "brand",
+		tone: "neutral",
 		variant: "solid",
 	},
 });
 
-/** @interal */
 export type ButtonStylesProps = GetVariantProps<typeof buttonStyles>;
 
 export interface ButtonProps extends AriaButtonProps, ButtonStylesProps {}
 
 export function Button(props: Readonly<ButtonProps>): ReactNode {
-	const { children, className, shape, size, tone, variant, ...rest } = props;
+	const { children, className, shape, size, tone, variant, ...rest } = useStylesContext(props);
 
 	return (
 		<AriaButton

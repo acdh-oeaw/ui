@@ -1,20 +1,39 @@
 "use client";
 
-import { cn } from "@acdh-oeaw/style-variants";
+import { type GetVariantProps, styles } from "@acdh-oeaw/style-variants";
 import type { ReactNode } from "react";
 import { Label as AriaLabel, type LabelProps as AriaLabelProps } from "react-aria-components";
 
-export interface LabelProps extends AriaLabelProps {}
+import { useStylesContext } from "@/src/primitives/styles-context";
+
+export const labelStyles = styles({
+	base: ["font-strong text-text-strong"],
+	variants: {
+		size: {
+			sm: ["text-sm/5"],
+			md: ["text-sm/5"],
+			lg: ["text-base/6"],
+		},
+	},
+	combinations: [],
+	defaults: {
+		size: "md",
+	},
+});
+
+export type LabelStylesProps = GetVariantProps<typeof labelStyles>;
+
+export interface LabelProps extends AriaLabelProps, LabelStylesProps {}
 
 export function Label(props: Readonly<LabelProps>): ReactNode {
-	const { children, className, ...rest } = props;
+	const { children, className, size, ...rest } = useStylesContext(props);
 
 	if (children == null) {
 		return null;
 	}
 
 	return (
-		<AriaLabel {...rest} className={cn(["text-sm font-strong text-text-strong"], className)}>
+		<AriaLabel {...rest} className={labelStyles({ className, size })}>
 			{children}
 		</AriaLabel>
 	);

@@ -2,7 +2,6 @@
 
 import { createContext, use } from "react";
 
-/** @internal */
 export interface FieldContextValue {
 	isDisabled?: boolean;
 	isInvalid?: boolean;
@@ -10,12 +9,13 @@ export interface FieldContextValue {
 	isRequired?: boolean;
 }
 
-/** @internal */
 export const FieldContext = createContext<FieldContextValue>({});
 
-/** @internal */
-export function useFieldContext(): FieldContextValue {
+export function useFieldContext<T extends object>(props: T): FieldContextValue & T {
 	const value = use(FieldContext);
 
-	return value;
+	return {
+		...value,
+		...props,
+	};
 }

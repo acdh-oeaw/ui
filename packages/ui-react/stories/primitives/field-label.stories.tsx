@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Label } from "@/src/primitives/label";
+import { FieldLabel } from "@/src/primitives/field-label";
 
 const meta = {
-	title: "Primitives/Label",
-	component: Label,
+	title: "Primitives/FieldLabel",
+	component: FieldLabel,
 	parameters: {
 		layout: "centered",
 	},
 	tags: ["autodocs"],
 	argTypes: {},
 	args: {},
-} satisfies Meta<typeof Label>;
+} satisfies Meta<typeof FieldLabel>;
 
 export default meta;
 
@@ -20,6 +20,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
 	args: {
 		children: "Fruits",
+		isRequired: true,
 	},
 };
 

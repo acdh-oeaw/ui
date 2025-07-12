@@ -8,14 +8,15 @@ import {
 	type SelectValueProps as AriaSelectValueProps,
 } from "react-aria-components";
 
-/** @internal */
+import { useStylesContext } from "@/src/primitives/styles-context";
+
 export const selectValueStyles = styles({
-	base: ["placeholder-shown:text-text-weaker placeholder-shown:italic"],
+	base: ["text-text-strong placeholder-shown:text-text-weaker placeholder-shown:italic"],
 	variants: {
 		size: {
-			sm: ["px-3.5 py-[calc(--spacing(2)-1px)] text-sm/5"],
-			md: ["px-4 py-[calc(--spacing(2.5)-1px)] text-sm/5"],
-			lg: ["px-4.5 py-[calc(--spacing(2.5)-1px)] text-base/6"],
+			sm: ["px-2.5 text-sm/5"],
+			md: ["px-3 text-base/6"],
+			lg: ["px-3.5 text-base/6"],
 		},
 	},
 	combinations: [],
@@ -24,7 +25,6 @@ export const selectValueStyles = styles({
 	},
 });
 
-/** @internal */
 export type SelectValueStylesProps = GetVariantProps<typeof selectValueStyles>;
 
 export interface SelectValueProps<T extends object>
@@ -32,7 +32,7 @@ export interface SelectValueProps<T extends object>
 		SelectValueStylesProps {}
 
 export function SelectValue<T extends object>(props: Readonly<SelectValueProps<T>>): ReactNode {
-	const { children, className, size, ...rest } = props;
+	const { children, className, size, ...rest } = useStylesContext(props);
 
 	return (
 		<AriaSelectValue

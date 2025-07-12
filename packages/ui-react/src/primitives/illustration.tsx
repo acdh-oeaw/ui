@@ -9,9 +9,9 @@ export const iconStyles = styles({
 	base: ["inline-grid shrink-0 place-items-center leading-0 *:[svg]:size-full"],
 	variants: {
 		size: {
-			sm: ["size-4"],
-			md: ["size-4"],
-			lg: ["size-5"],
+			sm: ["size-9"],
+			md: ["size-10"],
+			lg: ["size-11"],
 		},
 		tone: {
 			brand: ["text-icon-brand"],
@@ -30,14 +30,14 @@ export const iconStyles = styles({
 	},
 });
 
-export type IconStylesProps = GetVariantProps<typeof iconStyles>;
+export type IllustrationStylesProps = GetVariantProps<typeof iconStyles>;
 
-export interface IconProps extends IconStylesProps {
+export interface IllustrationProps extends IllustrationStylesProps {
 	children: ReactElement<SVGProps<SVGSVGElement>>;
 	className?: string;
 }
 
-export function Icon(props: Readonly<IconProps>): ReactNode {
+export function Illustration(props: Readonly<IllustrationProps>): ReactNode {
 	const { children, className, size, tone, ...rest } = useStylesContext(props);
 
 	return (

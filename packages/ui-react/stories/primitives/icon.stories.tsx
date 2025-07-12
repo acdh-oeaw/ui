@@ -1,17 +1,18 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { MenuIcon } from "lucide-react";
 
-import { Label } from "@/src/primitives/label";
+import { Icon } from "@/src/primitives/icon";
 
 const meta = {
-	title: "Primitives/Label",
-	component: Label,
+	title: "Primitives/Icon",
+	component: Icon,
 	parameters: {
 		layout: "centered",
 	},
 	tags: ["autodocs"],
 	argTypes: {},
 	args: {},
-} satisfies Meta<typeof Label>;
+} satisfies Meta<typeof Icon>;
 
 export default meta;
 
@@ -19,7 +20,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
 	args: {
-		children: "Fruits",
+		children: <MenuIcon />,
 	},
 };
 

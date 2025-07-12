@@ -1,17 +1,18 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { FolderSearchIcon } from "lucide-react";
 
-import { Label } from "@/src/primitives/label";
+import { Illustration } from "@/src/primitives/illustration";
 
 const meta = {
-	title: "Primitives/Label",
-	component: Label,
+	title: "Primitives/Illustration",
+	component: Illustration,
 	parameters: {
 		layout: "centered",
 	},
 	tags: ["autodocs"],
 	argTypes: {},
 	args: {},
-} satisfies Meta<typeof Label>;
+} satisfies Meta<typeof Illustration>;
 
 export default meta;
 
@@ -19,7 +20,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
 	args: {
-		children: "Fruits",
+		children: <FolderSearchIcon />,
 	},
 };
 

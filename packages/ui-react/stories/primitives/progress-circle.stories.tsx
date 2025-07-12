@@ -1,26 +1,24 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Label } from "@/src/primitives/label";
+import { ProgressCircle } from "@/src/primitives/progress-circle";
 
 const meta = {
-	title: "Primitives/Label",
-	component: Label,
+	title: "Primitives/ProgressCircle",
+	component: ProgressCircle,
 	parameters: {
 		layout: "centered",
 	},
 	tags: ["autodocs"],
 	argTypes: {},
 	args: {},
-} satisfies Meta<typeof Label>;
+} satisfies Meta<typeof ProgressCircle>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	args: {
-		children: "Fruits",
-	},
+	args: {},
 };
 
 export const SizeSmall: Story = {

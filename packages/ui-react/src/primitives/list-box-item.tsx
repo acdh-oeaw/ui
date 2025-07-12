@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@acdh-oeaw/style-variants";
+import { type GetVariantProps, styles } from "@acdh-oeaw/style-variants";
 import type { ReactNode } from "react";
 import {
 	composeRenderProps,
@@ -8,28 +8,43 @@ import {
 	type ListBoxItemProps as AriaListBoxItemProps,
 } from "react-aria-components";
 
-export interface ListBoxItemProps<T extends object> extends AriaListBoxItemProps<T> {}
+import { useStylesContext } from "@/src/primitives/styles-context";
+
+export const listBoxItemStyles = styles({
+	base: [
+		"relative isolate inline-flex truncate whitespace-nowrap outline-offset-0 outline-transparent transition",
+		"after:pointer-events-none after:absolute after:inset-0 after:-z-1 after:rounded-[inherit] after:transition",
+		"hover:after:bg-fill-hover",
+		"pressed:after:bg-fill-press",
+		"focus:outline-hidden focus-visible:outline-2 focus-visible:outline-stroke-focus",
+	],
+	variants: {
+		size: {
+			sm: ["h-9 gap-x-2 px-2 text-sm/5"],
+			md: ["h-10 gap-x-2 px-2 text-base/5"],
+			lg: ["h-11 gap-x-2 px-2 text-base/6"],
+		},
+	},
+	combinations: [],
+	defaults: {
+		size: "md",
+	},
+});
+
+export type ListBoxItemStylesProps = GetVariantProps<typeof listBoxItemStyles>;
+
+export interface ListBoxItemProps<T extends object>
+	extends AriaListBoxItemProps<T>,
+		ListBoxItemStylesProps {}
 
 export function ListBoxItem<T extends object>(props: Readonly<ListBoxItemProps<T>>): ReactNode {
-	const { children, className, ...rest } = props;
+	const { children, className, size, ...rest } = useStylesContext(props);
 
 	return (
 		<AriaListBoxItem
 			{...rest}
 			className={composeRenderProps(className, (className) => {
-				return cn(
-					[
-						"px-4 py-1.5 text-sm/5",
-						"relative isolate inline-flex cursor-default items-center text-left -outline-offset-2 outline-transparent transition select-none",
-						"after:pointer-events-none after:absolute after:-inset-px after:-z-10 after:rounded-[inherit] after:transition",
-						"hover:after:bg-fill-hover",
-						"pressed:after:bg-fill-press",
-						"focus:outline-hidden focus-visible:outline-2 focus-visible:outline-stroke-focus",
-						"selected:bg-fill-hover",
-						"disabled:text-text-disabled",
-					],
-					className,
-				);
+				return listBoxItemStyles({ className, size });
 			})}
 		>
 			{children}
