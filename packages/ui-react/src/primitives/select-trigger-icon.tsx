@@ -8,12 +8,12 @@ import { Icon, type IconProps } from "@/src/primitives/icon";
 import { useStylesContext } from "@/src/primitives/styles-context";
 
 export const selectTriggerIconStyles = styles({
-	base: ["self-stretch"],
+	base: ["my-auto"],
 	variants: {
 		size: {
-			sm: ["px-2.5"],
-			md: ["px-3"],
-			lg: ["px-3.5"],
+			sm: ["mx-2.5"],
+			md: ["mx-3"],
+			lg: ["mx-3.5"],
 		},
 	},
 	combinations: [],

@@ -16,7 +16,7 @@ export const selectButtonStyles = styles({
 		"after:pointer-events-none after:absolute after:-inset-px after:-z-1 after:rounded-[inherit] after:transition",
 		"hover:after:bg-fill-hover",
 		"pressed:after:bg-fill-press",
-		"focus:outline-hidden focus-visible:outline-2 focus-visible:outline-stroke-focus",
+		"focus:outline-hidden focus-visible:outline-2 focus-visible:outline-stroke-focus focus-visible:outline-solid",
 	],
 	variants: {
 		size: {

@@ -12,11 +12,11 @@ import { useStylesContext } from "@/src/primitives/styles-context";
 
 export const listBoxItemStyles = styles({
 	base: [
-		"relative isolate inline-flex truncate whitespace-nowrap outline-offset-0 outline-transparent transition",
+		"relative isolate inline-flex shrink-0 cursor-default items-center truncate rounded-sm whitespace-nowrap outline-offset-0 outline-transparent transition select-none",
 		"after:pointer-events-none after:absolute after:inset-0 after:-z-1 after:rounded-[inherit] after:transition",
 		"hover:after:bg-fill-hover",
 		"pressed:after:bg-fill-press",
-		"focus:outline-hidden focus-visible:outline-2 focus-visible:outline-stroke-focus",
+		"focus:outline-hidden focus-visible:outline-2 focus-visible:outline-stroke-focus focus-visible:outline-solid",
 	],
 	variants: {
 		size: {

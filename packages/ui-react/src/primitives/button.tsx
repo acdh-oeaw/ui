@@ -8,7 +8,7 @@ import {
 	composeRenderProps,
 } from "react-aria-components";
 
-import { useStylesContext } from "@/src/primitives/styles-context";
+import { StylesContext, useStylesContext } from "@/src/primitives/styles-context";
 
 export const buttonStyles = styles({
 	base: [
@@ -16,7 +16,7 @@ export const buttonStyles = styles({
 		"after:pointer-events-none after:absolute after:-inset-px after:-z-1 after:rounded-[inherit] after:transition",
 		"hover:after:bg-fill-hover",
 		"pressed:after:bg-fill-press",
-		"focus:outline-hidden focus-visible:outline-2 focus-visible:outline-stroke-focus",
+		"focus:outline-hidden focus-visible:outline-2 focus-visible:outline-stroke-focus focus-visible:outline-solid",
 	],
 	variants: {
 		shape: {
@@ -98,7 +98,9 @@ export function Button(props: Readonly<ButtonProps>): ReactNode {
 				return buttonStyles({ className, shape, size, tone, variant });
 			})}
 		>
-			{children}
+			{composeRenderProps(children, (children) => {
+				return <StylesContext value={{ size, tone }}>{children}</StylesContext>;
+			})}
 		</AriaButton>
 	);
 }

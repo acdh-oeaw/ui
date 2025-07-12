@@ -9,9 +9,9 @@ export const iconStyles = styles({
 	base: ["inline-grid shrink-0 place-items-center leading-0 *:[svg]:size-full"],
 	variants: {
 		size: {
-			sm: ["size-9"],
-			md: ["size-10"],
-			lg: ["size-11"],
+			sm: ["size-12"],
+			md: ["size-16"],
+			lg: ["size-24"],
 		},
 		tone: {
 			brand: ["text-icon-brand"],
