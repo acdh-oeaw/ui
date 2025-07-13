@@ -3,6 +3,7 @@ import "@/styles/storybook.css";
 
 import { withThemeByDataAttribute } from "@storybook/addon-themes";
 import type { Preview } from "@storybook/react-vite";
+import { I18nProvider } from "react-aria-components";
 import { themes } from "storybook/theming";
 
 const preview: Preview = {
@@ -15,6 +16,14 @@ const preview: Preview = {
 				dark: "dark",
 			},
 		}),
+		// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+		function WithProviders(Story) {
+			return (
+				<I18nProvider locale="en-GB">
+					<Story />
+				</I18nProvider>
+			);
+		},
 	],
 	parameters: {
 		a11y: {

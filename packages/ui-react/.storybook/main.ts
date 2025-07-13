@@ -2,7 +2,6 @@ import type { StorybookConfig } from "@storybook/react-vite";
 
 const config: StorybookConfig = {
 	addons: [
-		"@storybook/addon-onboarding",
 		"@chromatic-com/storybook",
 		"@storybook/addon-docs",
 		"@storybook/addon-a11y",
@@ -21,6 +20,10 @@ const config: StorybookConfig = {
 	typescript: {
 		reactDocgen: "react-docgen-typescript",
 		reactDocgenTypescriptOptions: {
+			compilerOptions: {
+				allowSyntheticDefaultImports: false,
+				esModuleInterop: false,
+			},
 			propFilter: (prop) => {
 				return !prop.name.startsWith("aria-");
 			},

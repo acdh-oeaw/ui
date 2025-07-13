@@ -1,27 +1,38 @@
 "use client";
 
-import { Fragment, type ReactNode } from "react";
-import { composeRenderProps } from "react-aria-components";
+import { type GetVariantProps, styles } from "@acdh-oeaw/style-variants";
+import type { ReactNode } from "react";
 
-import { SelectButton, type SelectButtonProps } from "@/src/primitives/select-button";
-import { SelectTriggerIcon } from "@/src/primitives/select-trigger-icon";
 import { useStylesContext } from "@/src/primitives/styles-context";
 
-export interface SelectTriggerProps extends SelectButtonProps {}
+export const selectTriggerStyles = styles({
+	base: ["inline-grid place-items-center self-stretch"],
+	variants: {
+		size: {
+			sm: ["px-2"],
+			md: ["px-2"],
+			lg: ["px-2"],
+		},
+	},
+	combinations: [],
+	defaults: {
+		size: "md",
+	},
+});
+
+export type SelectTriggerStylesProps = GetVariantProps<typeof selectTriggerStyles>;
+
+export interface SelectTriggerProps extends SelectTriggerStylesProps {
+	children: ReactNode;
+	className?: string;
+}
 
 export function SelectTrigger(props: Readonly<SelectTriggerProps>): ReactNode {
-	const { children, size, ...rest } = useStylesContext(props);
+	const { children, className, size, ...rest } = useStylesContext(props);
 
 	return (
-		<SelectButton {...rest} size={size}>
-			{composeRenderProps(children, (children) => {
-				return (
-					<Fragment>
-						{children}
-						<SelectTriggerIcon size={size} />
-					</Fragment>
-				);
-			})}
-		</SelectButton>
+		<span {...rest} className={selectTriggerStyles({ className, size })}>
+			{children}
+		</span>
 	);
 }

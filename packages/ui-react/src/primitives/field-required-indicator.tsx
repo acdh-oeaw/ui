@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
 
 import { Icon, type IconProps } from "@/src/primitives/icon";
 
-export interface FieldRequiredIndicatorProps extends Omit<IconProps, "children"> {}
+export interface FieldRequiredIndicatorProps extends Omit<IconProps, "children" | "size"> {}
 
 export function FieldRequiredIndicator(props: Readonly<FieldRequiredIndicatorProps>): ReactNode {
 	const { className, ...rest } = props;

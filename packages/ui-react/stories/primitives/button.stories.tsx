@@ -25,3 +25,66 @@ export const Default: Story = {
 		children: "Fruits",
 	},
 };
+
+export const SmallSolidBrand: Story = {
+	args: {
+		...Default.args,
+		size: "sm",
+		tone: "brand",
+		variant: "solid",
+	},
+};
+
+export const SmallSolidNeutral: Story = {
+	args: {
+		...Default.args,
+		size: "sm",
+		tone: "neutral",
+		variant: "solid",
+	},
+};
+
+export const SmallSolidInverse: Story = {
+	args: {
+		...Default.args,
+		size: "sm",
+		tone: "inverse",
+		variant: "solid",
+	},
+};
+
+export const SmallSolidNegative: Story = {
+	args: {
+		...Default.args,
+		size: "sm",
+		tone: "negative",
+		variant: "solid",
+	},
+};
+
+export const SmallSolidPositive: Story = {
+	args: {
+		...Default.args,
+		size: "sm",
+		tone: "positive",
+		variant: "solid",
+	},
+};
+
+export const SmallSolidWarning: Story = {
+	args: {
+		...Default.args,
+		size: "sm",
+		tone: "warning",
+		variant: "solid",
+	},
+};
+
+export const SmallSolidInformative: Story = {
+	args: {
+		...Default.args,
+		size: "sm",
+		tone: "informative",
+		variant: "solid",
+	},
+};

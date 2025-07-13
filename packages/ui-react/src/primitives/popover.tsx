@@ -19,7 +19,7 @@ export function Popover(props: Readonly<PopoverProps>): ReactNode {
 			className={composeRenderProps(className, (className) => {
 				return cn(
 					[
-						"min-w-[var(--ui-trigger-width,_var(--trigger-width))] rounded-sm border border-stroke-weak bg-background-overlay shadow-overlay",
+						"min-w-[var(--ui-trigger-width,_var(--trigger-width))] overflow-hidden rounded-sm border border-stroke-weak bg-background-overlay shadow-overlay",
 					],
 					className,
 				);

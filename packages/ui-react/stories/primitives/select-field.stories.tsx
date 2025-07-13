@@ -4,8 +4,8 @@ import { fn } from "storybook/test";
 import { ListBox } from "@/src/primitives/list-box";
 import { ListBoxItem } from "@/src/primitives/list-box-item";
 import { Popover } from "@/src/primitives/popover";
+import { SelectControl } from "@/src/primitives/select-control";
 import { SelectField } from "@/src/primitives/select-field";
-import { SelectTrigger } from "@/src/primitives/select-trigger";
 import { SelectValue } from "@/src/primitives/select-value";
 
 const items = [
@@ -54,15 +54,16 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	args: {},
+	args: {
+		"aria-label": "Fruits",
+		placeholder: "Select a fruit",
+	},
 	render(args) {
-		const { ...rest } = args;
-
 		return (
-			<SelectField {...rest}>
-				<SelectTrigger>
+			<SelectField {...args}>
+				<SelectControl>
 					<SelectValue />
-				</SelectTrigger>
+				</SelectControl>
 				<Popover>
 					<ListBox items={items}>
 						{(item) => {
@@ -73,4 +74,28 @@ export const Default: Story = {
 			</SelectField>
 		);
 	},
+};
+
+export const Small: Story = {
+	args: {
+		...Default.args,
+		size: "sm",
+	},
+	render: Default.render,
+};
+
+export const Medium: Story = {
+	args: {
+		...Default.args,
+		size: "md",
+	},
+	render: Default.render,
+};
+
+export const Large: Story = {
+	args: {
+		...Default.args,
+		size: "lg",
+	},
+	render: Default.render,
 };

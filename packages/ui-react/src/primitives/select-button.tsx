@@ -20,9 +20,9 @@ export const selectButtonStyles = styles({
 	],
 	variants: {
 		size: {
-			sm: ["h-9 gap-x-2"],
-			md: ["h-10 gap-x-2"],
-			lg: ["h-11 gap-x-2"],
+			sm: ["h-9 gap-x-2 text-sm/5"],
+			md: ["h-10 gap-x-2 text-base/6"],
+			lg: ["h-11 gap-x-2 text-base/6"],
 		},
 	},
 	combinations: [],

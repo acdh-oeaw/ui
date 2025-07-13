@@ -14,9 +14,9 @@ export const selectValueStyles = styles({
 	base: ["text-text-strong placeholder-shown:text-text-weaker placeholder-shown:italic"],
 	variants: {
 		size: {
-			sm: ["px-2.5 text-sm/5"],
-			md: ["px-3 text-base/6"],
-			lg: ["px-3.5 text-base/6"],
+			sm: ["px-2.5"],
+			md: ["px-3"],
+			lg: ["px-3.5"],
 		},
 	},
 	combinations: [],

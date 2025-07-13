@@ -11,7 +11,7 @@ import {
 import { useStylesContext } from "@/src/primitives/styles-context";
 
 export const fielderrorStyles = styles({
-	base: ["text-text-negative"],
+	base: ["text-text-negative forced-colors:text-[Mark]"],
 	variants: {
 		size: {
 			sm: ["text-sm/5"],

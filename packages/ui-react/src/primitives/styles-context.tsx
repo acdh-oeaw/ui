@@ -14,8 +14,21 @@ export function useStylesContext<T extends object>(props: T): StylesContextValue
 	const value = use(StylesContext);
 
 	return {
-		...value,
 		...props,
-		style: "style" in props ? { ...value.style, ...(props.style as CSSProperties) } : value.style,
+		size:
+			"size" in props && props.size !== undefined
+				? (props.size as StylesContextValue["size"])
+				: value.size,
+		style:
+			"style" in props
+				? {
+						...value.style,
+						...(props.style as CSSProperties),
+					}
+				: value.style,
+		tone:
+			"tone" in props && props.tone !== undefined
+				? (props.tone as StylesContextValue["tone"])
+				: value.tone,
 	};
 }

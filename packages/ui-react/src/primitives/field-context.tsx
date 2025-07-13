@@ -15,7 +15,22 @@ export function useFieldContext<T extends object>(props: T): FieldContextValue &
 	const value = use(FieldContext);
 
 	return {
-		...value,
 		...props,
+		isDisabled:
+			"isDisabled" in props && props.isDisabled !== undefined
+				? (props.isDisabled as FieldContextValue["isDisabled"])
+				: value.isDisabled,
+		isInvalid:
+			"isInvalid" in props && props.isInvalid !== undefined
+				? (props.isInvalid as FieldContextValue["isInvalid"])
+				: value.isInvalid,
+		isReadOnly:
+			"isReadOnly" in props && props.isReadOnly !== undefined
+				? (props.isReadOnly as FieldContextValue["isReadOnly"])
+				: value.isReadOnly,
+		isRequired:
+			"isRequired" in props && props.isRequired !== undefined
+				? (props.isRequired as FieldContextValue["isRequired"])
+				: value.isRequired,
 	};
 }
