@@ -18,7 +18,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	args: {},
+	args: {
+		"aria-label": "Pending...",
+	},
 };
 
 export const SizeSmall: Story = {
@@ -39,5 +41,12 @@ export const SizeLarge: Story = {
 	args: {
 		...Default.args,
 		size: "lg",
+	},
+};
+
+export const SizeExtraLarge: Story = {
+	args: {
+		...Default.args,
+		size: "xl",
 	},
 };

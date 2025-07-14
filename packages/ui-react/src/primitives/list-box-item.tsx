@@ -18,7 +18,7 @@ export const listBoxItemStyles = styles({
 		"pressed:after:bg-fill-press",
 		"focus:outline-hidden focus-visible:outline-2 focus-visible:outline-stroke-focus focus-visible:outline-solid",
 		"selected:font-strong",
-		"disabled:text-text-disabled",
+		"disabled:text-text-disabled disabled:forced-colors:text-[GrayText]",
 	],
 	variants: {
 		size: {

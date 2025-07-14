@@ -97,8 +97,8 @@ export const WithPendingIndicator: Story = {
 		children({ isPending }) {
 			return (
 				<Fragment>
-					{isPending ? <PendingIndicator /> : null}
-					{Default.args!.children as string}
+					{isPending ? <PendingIndicator aria-label="Eating fruit" size="line" /> : null}
+					{isPending ? "Mjam..." : "Eat fruit"}
 				</Fragment>
 			);
 		},

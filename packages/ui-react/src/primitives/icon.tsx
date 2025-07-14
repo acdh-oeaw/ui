@@ -11,8 +11,8 @@ export const iconStyles = styles({
 		size: {
 			line: ["size-[1lh]"],
 			sm: ["size-4"],
-			md: ["size-4.5"],
-			lg: ["size-5"],
+			md: ["size-5"],
+			lg: ["size-6"],
 			full: ["size-full"],
 		},
 		tone: {

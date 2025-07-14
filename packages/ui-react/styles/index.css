@@ -515,6 +515,10 @@
 		color: var(--color-text-inverse-strong);
 	}
 
+	:target {
+		scroll-margin-block-start: 2em;
+	}
+
 	html,
 	body {
 		block-size: 100%;
