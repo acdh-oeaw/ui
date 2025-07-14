@@ -2,7 +2,15 @@
 
 import { type GetVariantProps, styles } from "@acdh-oeaw/style-variants";
 import { useResizeObserver } from "@react-aria/utils";
-import { type ReactNode, use, useCallback, useMemo, useRef, useState } from "react";
+import {
+	type CSSProperties,
+	type ReactNode,
+	use,
+	useCallback,
+	useMemo,
+	useRef,
+	useState,
+} from "react";
 import {
 	ComboBox as AriaComboBox,
 	type ComboBoxProps as AriaComboBoxProps,
@@ -102,8 +110,8 @@ function ComboBoxFieldContext(props: Readonly<ComboBoxFieldContextProps>): React
 			triggerRef,
 			style: {
 				"--trigger-width": triggerWidth,
-			},
-		} as typeof popoverContextProps;
+			} as CSSProperties,
+		};
 	}, [popoverContextProps, triggerRef, triggerWidth]);
 
 	return (

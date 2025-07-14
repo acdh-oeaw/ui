@@ -16,6 +16,7 @@ export const selectValueStyles = styles({
 		"flex-1 text-text-strong",
 		"placeholder-shown:text-text-weaker placeholder-shown:italic",
 		"disabled:text-text-disabled",
+		"*:[slot=description]:hidden",
 	],
 	variants: {
 		size: {
