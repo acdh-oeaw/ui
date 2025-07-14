@@ -1,4 +1,7 @@
 export { Button } from "@/src/primitives/button";
+export { ComboBoxControl } from "@/src/primitives/combo-box-control";
+export { ComboBoxField } from "@/src/primitives/combo-box-field";
+export { ComboBoxInput } from "@/src/primitives/combo-box-input";
 export { FieldDescription } from "@/src/primitives/field-description";
 export { FieldErrorMessage } from "@/src/primitives/field-error-message";
 export { FieldLabel } from "@/src/primitives/field-label";
@@ -11,8 +14,8 @@ export { ListBoxItemLabel } from "@/src/primitives/list-box-item-label";
 export { ListBoxSection } from "@/src/primitives/list-box-section";
 export { ListBoxSectionHeader } from "@/src/primitives/list-box-section-header";
 export { ListBoxSectionItems } from "@/src/primitives/list-box-section-items";
+export { PendingIndicator } from "@/src/primitives/pending-indicator";
 export { Popover } from "@/src/primitives/popover";
-export { ProgressCircle } from "@/src/primitives/progress-circle";
 export { SelectControl } from "@/src/primitives/select-control";
 export { SelectField } from "@/src/primitives/select-field";
 export { SelectValue } from "@/src/primitives/select-value";

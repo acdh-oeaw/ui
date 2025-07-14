@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { ProgressCircle } from "@/src/primitives/progress-circle";
+import { PendingIndicator } from "@/src/primitives/pending-indicator";
 
 const meta = {
-	title: "Primitives/ProgressCircle",
-	component: ProgressCircle,
+	title: "Primitives/PendingIndicator",
+	component: PendingIndicator,
 	parameters: {
 		layout: "centered",
 	},
 	tags: ["autodocs"],
 	argTypes: {},
 	args: {},
-} satisfies Meta<typeof ProgressCircle>;
+} satisfies Meta<typeof PendingIndicator>;
 
 export default meta;
 

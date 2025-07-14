@@ -12,7 +12,7 @@ import { useStylesContext } from "@/src/primitives/styles-context";
 
 export const selectButtonStyles = styles({
 	base: [
-		"relative isolate inline-flex items-center rounded-sm border border-stroke-strong text-left whitespace-nowrap outline-offset-0 outline-transparent transition",
+		"relative isolate inline-flex items-center rounded-sm border border-stroke-strong bg-fill-inverse-strong text-left whitespace-nowrap outline-offset-0 outline-transparent transition",
 		"after:pointer-events-none after:absolute after:-inset-px after:-z-1 after:rounded-[inherit] after:transition",
 		"hover:after:bg-fill-hover",
 		"pressed:after:bg-fill-press",

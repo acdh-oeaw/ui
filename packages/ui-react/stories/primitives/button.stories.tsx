@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Fragment } from "react/jsx-runtime";
 import { fn } from "storybook/test";
 
 import { Button } from "@/src/primitives/button";
+import { PendingIndicator } from "@/src/primitives/pending-indicator";
 
 const meta = {
 	title: "Primitives/Button",
@@ -86,5 +88,20 @@ export const SmallSolidInformative: Story = {
 		size: "sm",
 		tone: "informative",
 		variant: "solid",
+	},
+};
+
+export const WithPendingIndicator: Story = {
+	args: {
+		...Default.args,
+		children({ isPending }) {
+			return (
+				<Fragment>
+					{isPending ? <PendingIndicator /> : null}
+					{Default.args!.children as string}
+				</Fragment>
+			);
+		},
+		isPending: true,
 	},
 };
