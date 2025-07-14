@@ -3,20 +3,21 @@
 import { type GetVariantProps, styles } from "@acdh-oeaw/style-variants";
 import type { ReactNode } from "react";
 import {
-	Button as AriaButton,
-	type ButtonProps as AriaButtonProps,
 	composeRenderProps,
+	Group as AriaGroup,
+	type GroupProps as AriaGroupProps,
 } from "react-aria-components";
 
 import { useStylesContext } from "@/src/primitives/styles-context";
 
-export const selectButtonStyles = styles({
+export const comboBoxInputGroupStyles = styles({
 	base: [
 		"relative isolate inline-flex items-center rounded-sm border border-stroke-strong text-left whitespace-nowrap outline-offset-0 outline-transparent transition",
 		"after:pointer-events-none after:absolute after:-inset-px after:-z-1 after:rounded-[inherit] after:transition",
 		"hover:after:bg-fill-hover",
-		"pressed:after:bg-fill-press",
+		"has-pressed:after:bg-fill-press",
 		"focus:outline-hidden focus-visible:outline-2 focus-visible:outline-stroke-focus focus-visible:outline-solid",
+		"focus-within:outline-1 focus-within:outline-stroke-strong focus-within:outline-solid",
 		"disabled:border-stroke-disabled disabled:text-text-disabled",
 	],
 	variants: {
@@ -32,21 +33,21 @@ export const selectButtonStyles = styles({
 	},
 });
 
-export type SelectButtonStylesProps = GetVariantProps<typeof selectButtonStyles>;
+export type ComboBoxInputGroupStylesProps = GetVariantProps<typeof comboBoxInputGroupStyles>;
 
-export interface SelectButtonProps extends AriaButtonProps, SelectButtonStylesProps {}
+export interface ComboBoxInputGroupProps extends AriaGroupProps, ComboBoxInputGroupStylesProps {}
 
-export function SelectButton(props: Readonly<SelectButtonProps>): ReactNode {
+export function ComboBoxInputGroup(props: Readonly<ComboBoxInputGroupProps>): ReactNode {
 	const { children, className, size, ...rest } = useStylesContext(props);
 
 	return (
-		<AriaButton
+		<AriaGroup
 			{...rest}
 			className={composeRenderProps(className, (className) => {
-				return selectButtonStyles({ className, size });
+				return comboBoxInputGroupStyles({ className, size });
 			})}
 		>
 			{children}
-		</AriaButton>
+		</AriaGroup>
 	);
 }
