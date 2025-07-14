@@ -17,6 +17,10 @@ export const listBoxItemStyles = styles({
 		"hover:after:bg-fill-hover",
 		"pressed:after:bg-fill-press",
 		"focus:outline-hidden focus-visible:outline-2 focus-visible:outline-stroke-focus focus-visible:outline-solid",
+		"disabled:text-text-disabled",
+
+		"focus-visible:forced-colors:bg-[Highlight] focus-visible:forced-colors:text-[HighlightText]",
+		"disabled:forced-colors:text-[GrayText]",
 	],
 	variants: {
 		size: {
@@ -35,7 +39,9 @@ export type ListBoxItemStylesProps = GetVariantProps<typeof listBoxItemStyles>;
 
 export interface ListBoxItemProps<T extends object>
 	extends AriaListBoxItemProps<T>,
-		ListBoxItemStylesProps {}
+		ListBoxItemStylesProps {
+	textValue: string;
+}
 
 export function ListBoxItem<T extends object>(props: Readonly<ListBoxItemProps<T>>): ReactNode {
 	const { children, className, size, ...rest } = useStylesContext(props);

@@ -14,7 +14,7 @@ export function FieldLabel(props: Readonly<FieldLabelProps>): ReactNode {
 	const { children, isRequired, ...rest } = useFieldContext(props);
 
 	return (
-		<Label {...rest}>
+		<Label {...rest} data-required={isRequired === true || undefined}>
 			{children}
 			{isRequired === true ? <FieldRequiredIndicator /> : null}
 		</Label>

@@ -7,7 +7,10 @@ import {
 	type ListBoxSectionProps as AriaListBoxSectionProps,
 } from "react-aria-components";
 
-export interface ListBoxSectionProps<T extends object> extends AriaListBoxSectionProps<T> {}
+export interface ListBoxSectionProps<T extends object>
+	extends Pick<AriaListBoxSectionProps<T>, "aria-label" | "className"> {
+	children: ReactNode;
+}
 
 export function ListBoxSection<T extends object>(
 	props: Readonly<ListBoxSectionProps<T>>,
@@ -15,7 +18,7 @@ export function ListBoxSection<T extends object>(
 	const { children, className, ...rest } = props;
 
 	return (
-		<AriaListBoxSection {...rest} className={cn([], className)}>
+		<AriaListBoxSection {...rest} className={cn(["flex flex-col"], className)}>
 			{children}
 		</AriaListBoxSection>
 	);

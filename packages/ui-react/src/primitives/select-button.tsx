@@ -17,6 +17,7 @@ export const selectButtonStyles = styles({
 		"hover:after:bg-fill-hover",
 		"pressed:after:bg-fill-press",
 		"focus:outline-hidden focus-visible:outline-2 focus-visible:outline-stroke-focus focus-visible:outline-solid",
+		"disabled:border-stroke-disabled disabled:text-text-disabled",
 	],
 	variants: {
 		size: {

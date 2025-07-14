@@ -6,7 +6,7 @@ import type { ReactElement, ReactNode, SVGProps } from "react";
 import { useStylesContext } from "@/src/primitives/styles-context";
 
 export const iconStyles = styles({
-	base: ["inline-flex shrink-0 *:[svg]:size-full"],
+	base: ["inline-flex shrink-0", "disabled:text-icon-disabled", "*:[svg]:size-full"],
 	variants: {
 		size: {
 			line: ["size-[1lh]"],
@@ -36,13 +36,20 @@ export type IconStylesProps = GetVariantProps<typeof iconStyles>;
 export interface IconProps extends IconStylesProps {
 	children: ReactElement<SVGProps<SVGSVGElement>>;
 	className?: string;
+	isDisabled?: boolean;
 }
 
 export function Icon(props: Readonly<IconProps>): ReactNode {
-	const { children, className, size, tone, ...rest } = useStylesContext(props);
+	const { children, className, isDisabled, size, tone, ...rest } = useStylesContext(props);
 
 	return (
-		<span {...rest} aria-hidden={true} className={iconStyles({ className, size, tone })}>
+		<span
+			{...rest}
+			aria-hidden={true}
+			className={iconStyles({ className, size, tone })}
+			data-disabled={isDisabled === true || undefined}
+			data-rac={true}
+		>
 			{children}
 		</span>
 	);

@@ -4,12 +4,13 @@ import { cn } from "@acdh-oeaw/style-variants";
 import { AsteriskIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
+import { useFieldContext } from "@/src/primitives/field-context";
 import { Icon, type IconProps } from "@/src/primitives/icon";
 
 export interface FieldRequiredIndicatorProps extends Omit<IconProps, "children" | "size"> {}
 
 export function FieldRequiredIndicator(props: Readonly<FieldRequiredIndicatorProps>): ReactNode {
-	const { className, ...rest } = props;
+	const { className, ...rest } = useFieldContext(props);
 
 	return (
 		<Icon {...rest} className={cn(["scale-75"], className)} size="line">

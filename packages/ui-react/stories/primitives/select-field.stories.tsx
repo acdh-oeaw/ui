@@ -1,39 +1,76 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
 
+import { ListBoxItemDescription, ListBoxItemLabel } from "@/src";
 import { ListBox } from "@/src/primitives/list-box";
 import { ListBoxItem } from "@/src/primitives/list-box-item";
+import { ListBoxSection } from "@/src/primitives/list-box-section";
+import { ListBoxSectionHeader } from "@/src/primitives/list-box-section-header";
+import { ListBoxSectionItems } from "@/src/primitives/list-box-section-items";
 import { Popover } from "@/src/primitives/popover";
 import { SelectControl } from "@/src/primitives/select-control";
 import { SelectField } from "@/src/primitives/select-field";
 import { SelectValue } from "@/src/primitives/select-value";
 
-const items = [
-	{ id: "apple", label: "Apple" },
-	{ id: "apricot", label: "Apricot" },
-	{ id: "banana", label: "Banana" },
-	{ id: "blackberry", label: "Blackberry" },
-	{ id: "blueberry", label: "Blueberry" },
-	{ id: "cantaloupe", label: "Cantaloupe" },
-	{ id: "cherry", label: "Cherry" },
-	{ id: "dragonfruit", label: "Dragonfruit" },
-	{ id: "fig", label: "Fig" },
-	{ id: "grape", label: "Grape" },
-	{ id: "guava", label: "Guava" },
-	{ id: "kiwi", label: "Kiwi" },
-	{ id: "lemon", label: "Lemon" },
-	{ id: "lime", label: "Lime" },
-	{ id: "mango", label: "Mango" },
-	{ id: "papaya", label: "Papaya" },
-	{ id: "passionfruit", label: "Passionfruit" },
-	{ id: "peach", label: "Peach" },
-	{ id: "pear", label: "Pear" },
-	{ id: "pineapple", label: "Pineapple" },
-	{ id: "plum", label: "Plum" },
-	{ id: "pomegranate", label: "Pomegranate" },
-	{ id: "raspberry", label: "Raspberry" },
-	{ id: "strawberry", label: "Strawberry" },
-	{ id: "watermelon", label: "Watermelon" },
+const fruits = [
+	{ id: "apple", label: "Apple", description: "Red or green fruit" },
+	{ id: "apricot", label: "Apricot", description: "Small orange fruit" },
+	{ id: "banana", label: "Banana", description: "Long yellow fruit" },
+	{ id: "blackberry", label: "Blackberry", description: "Dark berry" },
+	{ id: "blueberry", label: "Blueberry", description: "Blue berry" },
+	{ id: "cantaloupe", label: "Cantaloupe", description: "Orange melon" },
+	{ id: "cherry", label: "Cherry", description: "Small red fruit" },
+	{ id: "dragonfruit", label: "Dragonfruit", description: "Exotic pink fruit" },
+	{ id: "fig", label: "Fig", description: "Sweet purple fruit" },
+	{ id: "grape", label: "Grape", description: "Small round fruit" },
+	{ id: "guava", label: "Guava", description: "Tropical fruit" },
+	{ id: "kiwi", label: "Kiwi", description: "Brown fuzzy fruit" },
+	{ id: "lemon", label: "Lemon", description: "Sour yellow fruit" },
+	{ id: "lime", label: "Lime", description: "Green citrus fruit" },
+	{ id: "mango", label: "Mango", description: "Sweet tropical fruit" },
+	{ id: "papaya", label: "Papaya", description: "Orange tropical fruit" },
+	{ id: "passionfruit", label: "Passionfruit", description: "Tart tropical fruit" },
+	{ id: "peach", label: "Peach", description: "Juicy stone fruit" },
+	{ id: "pear", label: "Pear", description: "Green or yellow fruit" },
+	{ id: "pineapple", label: "Pineapple", description: "Spiky tropical fruit" },
+	{ id: "plum", label: "Plum", description: "Purple stone fruit" },
+	{ id: "pomegranate", label: "Pomegranate", description: "Red seeded fruit" },
+	{ id: "raspberry", label: "Raspberry", description: "Red berry" },
+	{ id: "strawberry", label: "Strawberry", description: "Sweet red berry" },
+	{ id: "watermelon", label: "Watermelon", description: "Large green melon" },
+];
+
+const vegetables = [
+	{ id: "artichoke", label: "Artichoke" },
+	{ id: "arugula", label: "Arugula" },
+	{ id: "asparagus", label: "Asparagus" },
+	{ id: "beet", label: "Beet" },
+	{ id: "broccoli", label: "Broccoli" },
+	{ id: "brussels_sprout", label: "Brussels Sprout" },
+	{ id: "cabbage", label: "Cabbage" },
+	{ id: "carrot", label: "Carrot" },
+	{ id: "cauliflower", label: "Cauliflower" },
+	{ id: "celery", label: "Celery" },
+	{ id: "chard", label: "Chard" },
+	{ id: "collard_greens", label: "Collard Greens" },
+	{ id: "corn", label: "Corn" },
+	{ id: "cucumber", label: "Cucumber" },
+	{ id: "eggplant", label: "Eggplant" },
+	{ id: "fennel", label: "Fennel" },
+	{ id: "garlic", label: "Garlic" },
+	{ id: "kale", label: "Kale" },
+	{ id: "leek", label: "Leek" },
+	{ id: "lettuce", label: "Lettuce" },
+	{ id: "okra", label: "Okra" },
+	{ id: "onion", label: "Onion" },
+	{ id: "parsnip", label: "Parsnip" },
+	{ id: "pea", label: "Pea" },
+	{ id: "pepper", label: "Pepper" },
+];
+
+const sections = [
+	{ id: "fruits", label: "Fruits", children: fruits },
+	{ id: "vegetables", label: "Vegetables", children: vegetables },
 ];
 
 const meta = {
@@ -65,9 +102,13 @@ export const Default: Story = {
 					<SelectValue />
 				</SelectControl>
 				<Popover>
-					<ListBox items={items}>
+					<ListBox items={fruits}>
 						{(item) => {
-							return <ListBoxItem key={item.id}>{item.label}</ListBoxItem>;
+							return (
+								<ListBoxItem key={item.id} textValue={item.label}>
+									{item.label}
+								</ListBoxItem>
+							);
 						}}
 					</ListBox>
 				</Popover>
@@ -98,4 +139,92 @@ export const Large: Story = {
 		size: "lg",
 	},
 	render: Default.render,
+};
+
+export const Disabled: Story = {
+	args: {
+		...Default.args,
+		isDisabled: true,
+	},
+	render: Default.render,
+};
+
+export const DisabledItems: Story = {
+	args: {
+		...Default.args,
+		disabledKeys: ["peach"],
+	},
+	render: Default.render,
+};
+
+export const ItemDescriptions: Story = {
+	args: {
+		...Default.args,
+	},
+	render(args) {
+		return (
+			<SelectField {...args}>
+				<SelectControl>
+					<SelectValue>
+						{(value) => {
+							return value.selectedText; // FIXME:
+						}}
+					</SelectValue>
+				</SelectControl>
+				<Popover>
+					<ListBox items={fruits}>
+						{(item) => {
+							return (
+								<ListBoxItem
+									key={item.id}
+									className={`inline-grid h-[unset]! gap-y-0.5 ${args.size === "sm" ? "py-1.5" : "py-2"}`} // FIXME:
+									textValue={item.label}
+								>
+									<ListBoxItemLabel>{item.label}</ListBoxItemLabel>
+									<ListBoxItemDescription className="text-sm">
+										{item.description}
+									</ListBoxItemDescription>
+								</ListBoxItem>
+							);
+						}}
+					</ListBox>
+				</Popover>
+			</SelectField>
+		);
+	},
+};
+
+export const Sections: Story = {
+	args: {
+		...Default.args,
+	},
+	render(args) {
+		return (
+			<SelectField {...args}>
+				<SelectControl>
+					<SelectValue />
+				</SelectControl>
+				<Popover>
+					<ListBox items={sections}>
+						{(section) => {
+							return (
+								<ListBoxSection key={section.id}>
+									<ListBoxSectionHeader>{section.label}</ListBoxSectionHeader>
+									<ListBoxSectionItems items={section.children}>
+										{(item) => {
+											return (
+												<ListBoxItem key={item.id} textValue={item.label}>
+													{item.label}
+												</ListBoxItem>
+											);
+										}}
+									</ListBoxSectionItems>
+								</ListBoxSection>
+							);
+						}}
+					</ListBox>
+				</Popover>
+			</SelectField>
+		);
+	},
 };

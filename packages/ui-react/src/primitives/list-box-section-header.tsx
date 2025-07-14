@@ -7,12 +7,14 @@ import { Header as AriaHeader } from "react-aria-components";
 import { useStylesContext } from "@/src/primitives/styles-context";
 
 export const listBoxSectionHeaderStyles = styles({
-	base: [],
+	base: [
+		"sticky top-0 z-10 inline-flex items-center truncate border-y border-stroke-weak bg-background-overlay text-text-weak select-none",
+	],
 	variants: {
 		size: {
-			sm: [],
-			md: [],
-			lg: [],
+			sm: ["h-9 px-2 text-sm/5"],
+			md: ["h-10 px-2 text-base/6"],
+			lg: ["h-11 px-2 text-base/6"],
 		},
 	},
 	combinations: [],
