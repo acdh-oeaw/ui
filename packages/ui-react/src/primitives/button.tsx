@@ -12,7 +12,7 @@ import { StylesContext, useStylesContext } from "@/src/primitives/styles-context
 
 export const buttonStyles = styles({
 	base: [
-		"relative isolate inline-flex items-center rounded-weak border text-center font-strong whitespace-nowrap outline-offset-2 outline-transparent transition",
+		"relative isolate rounded-weak border text-center font-strong whitespace-nowrap outline-offset-2 outline-transparent transition",
 		"after:pointer-events-none after:absolute after:-inset-px after:-z-1 after:rounded-[inherit] after:transition",
 		"hover:after:bg-fill-hover",
 		"pressed:after:bg-fill-press",
@@ -20,8 +20,8 @@ export const buttonStyles = styles({
 	],
 	variants: {
 		shape: {
-			default: [],
-			square: [],
+			default: ["inline-flex items-center"],
+			square: ["inline-grid place-items-center"],
 		},
 		size: {
 			sm: ["text-sm/5"],

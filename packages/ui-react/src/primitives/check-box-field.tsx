@@ -8,11 +8,12 @@ import {
 	composeRenderProps,
 } from "react-aria-components";
 
+import { CheckBoxStateContext } from "@/src/primitives/check-box-state";
 import { FieldContext } from "@/src/primitives/field-context";
 import { StylesContext, useStylesContext } from "@/src/primitives/styles-context";
 
 export const checkBoxFieldStyles = styles({
-	base: ["inline-flex text-text-strong"],
+	base: ["inline-flex items-center align-middle text-text-strong"],
 	variants: {
 		size: {
 			sm: ["gap-x-1.5 text-sm/5"],
@@ -47,7 +48,9 @@ export function CheckBoxField(props: Readonly<CheckBoxPropsField>): ReactNode {
 			{composeRenderProps(children, (children, renderProps) => {
 				return (
 					<StylesContext value={stylesProps}>
-						<FieldContext value={renderProps}>{children}</FieldContext>
+						<FieldContext value={renderProps}>
+							<CheckBoxStateContext value={renderProps}>{children}</CheckBoxStateContext>
+						</FieldContext>
 					</StylesContext>
 				);
 			})}

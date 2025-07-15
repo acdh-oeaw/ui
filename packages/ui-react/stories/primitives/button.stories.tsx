@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { MenuIcon } from "lucide-react";
 import { Fragment } from "react/jsx-runtime";
 import { fn } from "storybook/test";
 
 import { Button } from "@/src/primitives/button";
+import { Icon } from "@/src/primitives/icon";
 import { PendingIndicator } from "@/src/primitives/pending-indicator";
 
 const meta = {
@@ -103,5 +105,20 @@ export const WithPendingIndicator: Story = {
 			);
 		},
 		isPending: true,
+	},
+};
+
+export const IconButton: Story = {
+	args: {
+		...Default.args,
+		children() {
+			return (
+				<Icon tone="inverse">
+					<MenuIcon />
+				</Icon>
+			);
+		},
+		shape: "square",
+		tone: "brand",
 	},
 };
