@@ -11,7 +11,7 @@ import {
 import { StylesContext, useStylesContext } from "@/src/primitives/styles-context";
 
 export const tableStyles = styles({
-	base: ["w-full"],
+	base: [],
 	variants: {
 		size: {
 			sm: ["text-sm/5"],

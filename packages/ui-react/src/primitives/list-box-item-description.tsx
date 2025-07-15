@@ -10,7 +10,7 @@ export function ListBoxItemDescription(props: Readonly<ListBoxItemDescriptionPro
 	const { children, className, ...rest } = props;
 
 	return (
-		<AriaText {...rest} className={cn(["text-text-weak"], className)} slot="description">
+		<AriaText {...rest} className={cn(["text-sm text-text-weak"], className)} slot="description">
 			{children}
 		</AriaText>
 	);

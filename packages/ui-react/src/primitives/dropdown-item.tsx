@@ -23,7 +23,9 @@ export function DropdownItem<T extends object>(props: Readonly<DropdownItemProps
 				return (
 					<Fragment>
 						{children}
-						{isSelected ? <ListBoxItemCheckIcon className="col-start-2 row-start-1" /> : null}
+						{isSelected ? (
+							<ListBoxItemCheckIcon className="col-start-2 row-start-1" tone="brand" />
+						) : null}
 					</Fragment>
 				);
 			})}

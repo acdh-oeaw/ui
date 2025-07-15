@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
 
+import { fruits, sections } from "@/src/data";
 import { Dropdown } from "@/src/primitives/dropdown";
 import { DropdownItem } from "@/src/primitives/dropdown-item";
 import { DropdownItemDescription } from "@/src/primitives/dropdown-item-description";
@@ -12,67 +13,6 @@ import { Popover } from "@/src/primitives/popover";
 import { SelectControl } from "@/src/primitives/select-control";
 import { SelectField } from "@/src/primitives/select-field";
 import { SelectValue } from "@/src/primitives/select-value";
-
-const fruits = [
-	{ id: "apple", label: "Apple", description: "Red or green fruit" },
-	{ id: "apricot", label: "Apricot", description: "Small orange fruit" },
-	{ id: "banana", label: "Banana", description: "Long yellow fruit" },
-	{ id: "blackberry", label: "Blackberry", description: "Dark berry" },
-	{ id: "blueberry", label: "Blueberry", description: "Blue berry" },
-	{ id: "cantaloupe", label: "Cantaloupe", description: "Orange melon" },
-	{ id: "cherry", label: "Cherry", description: "Small red fruit" },
-	{ id: "dragonfruit", label: "Dragonfruit", description: "Exotic pink fruit" },
-	{ id: "fig", label: "Fig", description: "Sweet purple fruit" },
-	{ id: "grape", label: "Grape", description: "Small round fruit" },
-	{ id: "guava", label: "Guava", description: "Tropical fruit" },
-	{ id: "kiwi", label: "Kiwi", description: "Brown fuzzy fruit" },
-	{ id: "lemon", label: "Lemon", description: "Sour yellow fruit" },
-	{ id: "lime", label: "Lime", description: "Green citrus fruit" },
-	{ id: "mango", label: "Mango", description: "Sweet tropical fruit" },
-	{ id: "papaya", label: "Papaya", description: "Orange tropical fruit" },
-	{ id: "passionfruit", label: "Passionfruit", description: "Tart tropical fruit" },
-	{ id: "peach", label: "Peach", description: "Juicy stone fruit" },
-	{ id: "pear", label: "Pear", description: "Green or yellow fruit" },
-	{ id: "pineapple", label: "Pineapple", description: "Spiky tropical fruit" },
-	{ id: "plum", label: "Plum", description: "Purple stone fruit" },
-	{ id: "pomegranate", label: "Pomegranate", description: "Red seeded fruit" },
-	{ id: "raspberry", label: "Raspberry", description: "Red berry" },
-	{ id: "strawberry", label: "Strawberry", description: "Sweet red berry" },
-	{ id: "watermelon", label: "Watermelon", description: "Large green melon" },
-];
-
-const vegetables = [
-	{ id: "artichoke", label: "Artichoke" },
-	{ id: "arugula", label: "Arugula" },
-	{ id: "asparagus", label: "Asparagus" },
-	{ id: "beet", label: "Beet" },
-	{ id: "broccoli", label: "Broccoli" },
-	{ id: "brussels_sprout", label: "Brussels Sprout" },
-	{ id: "cabbage", label: "Cabbage" },
-	{ id: "carrot", label: "Carrot" },
-	{ id: "cauliflower", label: "Cauliflower" },
-	{ id: "celery", label: "Celery" },
-	{ id: "chard", label: "Chard" },
-	{ id: "collard_greens", label: "Collard Greens" },
-	{ id: "corn", label: "Corn" },
-	{ id: "cucumber", label: "Cucumber" },
-	{ id: "eggplant", label: "Eggplant" },
-	{ id: "fennel", label: "Fennel" },
-	{ id: "garlic", label: "Garlic" },
-	{ id: "kale", label: "Kale" },
-	{ id: "leek", label: "Leek" },
-	{ id: "lettuce", label: "Lettuce" },
-	{ id: "okra", label: "Okra" },
-	{ id: "onion", label: "Onion" },
-	{ id: "parsnip", label: "Parsnip" },
-	{ id: "pea", label: "Pea" },
-	{ id: "pepper", label: "Pepper" },
-];
-
-const sections = [
-	{ id: "fruits", label: "Fruits", children: fruits },
-	{ id: "vegetables", label: "Vegetables", children: vegetables },
-];
 
 const meta = {
 	title: "Primitives/SelectField",
