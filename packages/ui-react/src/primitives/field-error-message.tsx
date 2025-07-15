@@ -8,7 +8,7 @@ import { composeRenderProps } from "react-aria-components";
 import { FieldError, type FieldErrorProps } from "@/src/primitives/field-error";
 import { Icon } from "@/src/primitives/icon";
 
-interface FieldErrorMessageProps extends FieldErrorProps {}
+export interface FieldErrorMessageProps extends FieldErrorProps {}
 
 export function FieldErrorMessage(props: Readonly<FieldErrorMessageProps>): ReactNode {
 	const { children, className, ...rest } = props;
