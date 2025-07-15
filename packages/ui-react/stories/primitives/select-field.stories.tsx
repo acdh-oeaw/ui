@@ -1,12 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
 
-import { ListBoxItemDescription, ListBoxItemLabel } from "@/src";
-import { ListBox } from "@/src/primitives/list-box";
-import { ListBoxItem } from "@/src/primitives/list-box-item";
-import { ListBoxSection } from "@/src/primitives/list-box-section";
-import { ListBoxSectionHeader } from "@/src/primitives/list-box-section-header";
-import { ListBoxSectionItems } from "@/src/primitives/list-box-section-items";
+import { Dropdown } from "@/src/primitives/dropdown";
+import { DropdownItem } from "@/src/primitives/dropdown-item";
+import { DropdownItemDescription } from "@/src/primitives/dropdown-item-description";
+import { DropdownItemLabel } from "@/src/primitives/dropdown-item-label";
+import { DropdownSection } from "@/src/primitives/dropdown-section";
+import { DropdownSectionHeader } from "@/src/primitives/dropdown-section-header";
+import { DropdownSectionItems } from "@/src/primitives/dropdown-section-items";
 import { Popover } from "@/src/primitives/popover";
 import { SelectControl } from "@/src/primitives/select-control";
 import { SelectField } from "@/src/primitives/select-field";
@@ -102,15 +103,15 @@ export const Default: Story = {
 					<SelectValue />
 				</SelectControl>
 				<Popover>
-					<ListBox items={fruits}>
+					<Dropdown items={fruits}>
 						{(item) => {
 							return (
-								<ListBoxItem key={item.id} textValue={item.label}>
+								<DropdownItem key={item.id} textValue={item.label}>
 									{item.label}
-								</ListBoxItem>
+								</DropdownItem>
 							);
 						}}
-					</ListBox>
+					</Dropdown>
 				</Popover>
 			</SelectField>
 		);
@@ -172,22 +173,22 @@ export const ItemDescriptions: Story = {
 					</SelectValue>
 				</SelectControl>
 				<Popover>
-					<ListBox items={fruits}>
+					<Dropdown items={fruits}>
 						{(item) => {
 							return (
-								<ListBoxItem
+								<DropdownItem
 									key={item.id}
 									className={`inline-grid h-[unset]! gap-y-0.5 ${args.size === "sm" ? "py-1.5" : "py-2"}`} // FIXME:
 									textValue={item.label}
 								>
-									<ListBoxItemLabel>{item.label}</ListBoxItemLabel>
-									<ListBoxItemDescription className="text-sm">
+									<DropdownItemLabel>{item.label}</DropdownItemLabel>
+									<DropdownItemDescription className="text-sm">
 										{item.description}
-									</ListBoxItemDescription>
-								</ListBoxItem>
+									</DropdownItemDescription>
+								</DropdownItem>
 							);
 						}}
-					</ListBox>
+					</Dropdown>
 				</Popover>
 			</SelectField>
 		);
@@ -205,24 +206,24 @@ export const Sections: Story = {
 					<SelectValue />
 				</SelectControl>
 				<Popover>
-					<ListBox items={sections}>
+					<Dropdown items={sections}>
 						{(section) => {
 							return (
-								<ListBoxSection key={section.id}>
-									<ListBoxSectionHeader>{section.label}</ListBoxSectionHeader>
-									<ListBoxSectionItems items={section.children}>
+								<DropdownSection key={section.id}>
+									<DropdownSectionHeader>{section.label}</DropdownSectionHeader>
+									<DropdownSectionItems items={section.children}>
 										{(item) => {
 											return (
-												<ListBoxItem key={item.id} textValue={item.label}>
+												<DropdownItem key={item.id} textValue={item.label}>
 													{item.label}
-												</ListBoxItem>
+												</DropdownItem>
 											);
 										}}
-									</ListBoxSectionItems>
-								</ListBoxSection>
+									</DropdownSectionItems>
+								</DropdownSection>
 							);
 						}}
-					</ListBox>
+					</Dropdown>
 				</Popover>
 			</SelectField>
 		);

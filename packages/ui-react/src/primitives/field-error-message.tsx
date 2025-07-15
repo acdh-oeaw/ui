@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@acdh-oeaw/style-variants";
 import { AlertTriangleIcon } from "lucide-react";
 import { Fragment, type ReactNode } from "react";

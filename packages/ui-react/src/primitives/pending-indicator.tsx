@@ -1,3 +1,5 @@
+"use client";
+
 import { type GetVariantProps, styles } from "@acdh-oeaw/style-variants";
 import type { ReactNode } from "react";
 
