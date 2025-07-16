@@ -22,9 +22,9 @@ export const comboBoxInputGroupStyles = styles({
 	],
 	variants: {
 		size: {
-			sm: ["h-9 gap-x-2 text-sm/5"],
-			md: ["h-10 gap-x-2 text-base/6"],
-			lg: ["h-11 gap-x-2 text-base/6"],
+			sm: ["h-9 text-sm/5"],
+			md: ["h-10 text-base/6"],
+			lg: ["h-11 text-base/6"],
 		},
 	},
 	combinations: [],

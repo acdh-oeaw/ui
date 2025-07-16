@@ -8,9 +8,11 @@ import {
 	type ListBoxItemDescriptionProps,
 } from "@/src/primitives/list-box-item-description";
 
-export interface DropdownItemDescriptionProps extends ListBoxItemDescriptionProps {}
+export interface ListBoxItemCheckableDescriptionProps extends ListBoxItemDescriptionProps {}
 
-export function DropdownItemDescription(props: Readonly<DropdownItemDescriptionProps>): ReactNode {
+export function ListBoxItemCheckableDescription(
+	props: Readonly<ListBoxItemCheckableDescriptionProps>,
+): ReactNode {
 	const { children, className, ...rest } = props;
 
 	return (

@@ -6,7 +6,7 @@ import type { ReactElement, ReactNode, SVGProps } from "react";
 import { useStylesContext } from "@/src/primitives/styles-context";
 
 export const iconStyles = styles({
-	base: ["inline-flex shrink-0", "disabled:text-icon-disabled", "*:[svg]:size-full"],
+	base: ["inline-flex shrink-0", "*:[svg]:size-full"],
 	variants: {
 		size: {
 			line: ["size-[1lh]"],
@@ -16,13 +16,14 @@ export const iconStyles = styles({
 			full: ["size-full"],
 		},
 		tone: {
-			brand: ["text-icon-brand"],
-			neutral: ["text-icon-neutral"],
-			inverse: ["text-icon-inverse"],
-			negative: ["text-icon-negative"],
-			positive: ["text-icon-positive"],
-			warning: ["text-icon-warning"],
-			informative: ["text-icon-informative"],
+			brand: ["text-icon-brand", "disabled:text-icon-disabled"],
+			neutral: ["text-icon-neutral", "disabled:text-icon-disabled"],
+			inverse: ["text-icon-inverse", "disabled:text-icon-inverse-disabled"],
+			"inverse-strong": ["text-icon-inverse-strong", "disabled:text-icon-inverse-disabled"],
+			negative: ["text-icon-negative", "disabled:text-icon-disabled"],
+			positive: ["text-icon-positive", "disabled:text-icon-disabled"],
+			warning: ["text-icon-warning", "disabled:text-icon-disabled"],
+			informative: ["text-icon-informative", "disabled:text-icon-disabled"],
 		},
 	},
 	combinations: [],

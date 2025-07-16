@@ -2,7 +2,7 @@ import { DEFAULT_VALIDATION_RESULT } from "@react-stately/form";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { FieldErrorContext } from "react-aria-components";
 
-import { FieldErrorMessage } from "@/src/primitives/field-error-message";
+import { FieldErrorMessage } from "@/src";
 
 const meta = {
 	title: "Primitives/FieldErrorMessage",

@@ -11,17 +11,22 @@ import {
 import { useStylesContext } from "@/src/primitives/styles-context";
 
 export const tableRowStyles = styles({
-	base: [],
+	base: ["relative isolate cursor-default outline-none"],
 	variants: {
 		size: {
 			sm: [],
 			md: [],
 			lg: [],
 		},
+		variant: {
+			default: [],
+			striped: ["odd:bg-fill-weaker"],
+		},
 	},
 	combinations: [],
 	defaults: {
 		size: "md",
+		variant: "default",
 	},
 });
 
@@ -30,13 +35,13 @@ export type TableRowStylesProps = GetVariantProps<typeof tableRowStyles>;
 export interface TableRowProps<T extends object> extends AriaRowProps<T>, TableRowStylesProps {}
 
 export function TableRow<T extends object>(props: Readonly<TableRowProps<T>>): ReactNode {
-	const { children, className, size, ...rest } = useStylesContext(props);
+	const { children, className, size, variant, ...rest } = useStylesContext(props);
 
 	return (
 		<AriaRow
 			{...rest}
 			className={composeRenderProps(className, (className) => {
-				return tableRowStyles({ className, size });
+				return tableRowStyles({ className, size, variant });
 			})}
 		>
 			{children}

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { FolderSearchIcon } from "lucide-react";
 
-import { Illustration } from "@/src/primitives/illustration";
+import { Illustration } from "@/src";
 
 const meta = {
 	title: "Primitives/Illustration",

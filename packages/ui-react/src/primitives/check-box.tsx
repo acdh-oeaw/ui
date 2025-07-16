@@ -53,12 +53,12 @@ export function CheckBox(props: Readonly<CheckBoxProps>): ReactNode {
 			data-selected={isSelected === true || undefined}
 		>
 			{isSelected === true ? (
-				<Icon size="full">
-					<CheckIcon className="stroke-3 text-white" />
+				<Icon size="full" tone="inverse-strong">
+					<CheckIcon className="stroke-3" />
 				</Icon>
 			) : isIndeterminate === true ? (
-				<Icon size="full">
-					<MinusIcon className="stroke-3 text-white" />
+				<Icon size="full" tone="inverse-strong">
+					<MinusIcon className="stroke-3" />
 				</Icon>
 			) : null}
 		</div>

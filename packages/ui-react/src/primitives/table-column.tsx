@@ -11,7 +11,9 @@ import {
 import { useStylesContext } from "@/src/primitives/styles-context";
 
 export const tableColumnStyles = styles({
-	base: [],
+	base: [
+		"h-12 cursor-default border-y border-stroke-weak px-6 py-3.5 text-left text-sm/5 font-strong text-text-weak",
+	],
 	variants: {
 		size: {
 			sm: [],

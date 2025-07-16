@@ -7,15 +7,17 @@ import { composeRenderProps } from "react-aria-components";
 import { ListBoxItem, type ListBoxItemProps } from "@/src/primitives/list-box-item";
 import { ListBoxItemCheckIcon } from "@/src/primitives/list-box-item-check-icon";
 
-export interface DropdownItemProps<T extends object> extends ListBoxItemProps<T> {}
+export interface ListBoxItemCheckableProps<T extends object> extends ListBoxItemProps<T> {}
 
-export function DropdownItem<T extends object>(props: Readonly<DropdownItemProps<T>>): ReactNode {
+export function ListBoxItemCheckable<T extends object>(
+	props: Readonly<ListBoxItemCheckableProps<T>>,
+): ReactNode {
 	const { children, className, ...rest } = props;
 
 	return (
 		<ListBoxItem
 			{...rest}
-			className={cn(["col-span-full inline-grid grid-cols-subgrid"], className)}
+			className={cn(["col-span-full inline-grid grid-cols-subgrid gap-x-4"], className)}
 		>
 			{composeRenderProps(children, (children, renderProps) => {
 				const { isSelected } = renderProps;

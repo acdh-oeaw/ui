@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { Form } from "@/src/primitives/form";
+import { Form } from "@/src";
 
 const meta = {
 	title: "Primitives/Form",

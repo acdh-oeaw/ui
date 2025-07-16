@@ -5,9 +5,11 @@ import type { ReactNode } from "react";
 
 import { ListBoxItemLabel, type ListBoxItemLabelProps } from "@/src/primitives/list-box-item-label";
 
-export interface DropdownItemLabelProps extends ListBoxItemLabelProps {}
+export interface ListBoxItemCheckableLabelProps extends ListBoxItemLabelProps {}
 
-export function DropdownItemLabel(props: Readonly<DropdownItemLabelProps>): ReactNode {
+export function ListBoxItemCheckableLabel(
+	props: Readonly<ListBoxItemCheckableLabelProps>,
+): ReactNode {
 	const { children, className, ...rest } = props;
 
 	return (

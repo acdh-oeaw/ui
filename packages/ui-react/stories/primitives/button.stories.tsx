@@ -3,9 +3,7 @@ import { MenuIcon } from "lucide-react";
 import { Fragment } from "react/jsx-runtime";
 import { fn } from "storybook/test";
 
-import { Button } from "@/src/primitives/button";
-import { Icon } from "@/src/primitives/icon";
-import { PendingIndicator } from "@/src/primitives/pending-indicator";
+import { Button, Icon, PendingIndicator } from "@/src";
 
 const meta = {
 	title: "Primitives/Button",
@@ -113,7 +111,7 @@ export const IconButton: Story = {
 		...Default.args,
 		children() {
 			return (
-				<Icon tone="inverse">
+				<Icon tone="inverse-strong">
 					<MenuIcon />
 				</Icon>
 			);

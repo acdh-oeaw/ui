@@ -1,18 +1,23 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { DollarSignIcon } from "lucide-react";
 import { fn } from "storybook/test";
 
+import {
+	ComboBoxControl,
+	ComboBoxField,
+	ComboBoxInput,
+	Icon,
+	ListBox,
+	ListBoxItem,
+	ListBoxItemDescription,
+	ListBoxItemLabel,
+	ListBoxSection,
+	ListBoxSectionHeader,
+	ListBoxSectionItems,
+	Popover,
+} from "@/src";
 import { fruits, sections } from "@/src/data";
-import { ComboBoxControl } from "@/src/primitives/combo-box-control";
-import { ComboBoxField } from "@/src/primitives/combo-box-field";
-import { ComboBoxInput } from "@/src/primitives/combo-box-input";
-import { Dropdown } from "@/src/primitives/dropdown";
-import { DropdownItem } from "@/src/primitives/dropdown-item";
-import { DropdownItemDescription } from "@/src/primitives/dropdown-item-description";
-import { DropdownItemLabel } from "@/src/primitives/dropdown-item-label";
-import { DropdownSection } from "@/src/primitives/dropdown-section";
-import { DropdownSectionHeader } from "@/src/primitives/dropdown-section-header";
-import { DropdownSectionItems } from "@/src/primitives/dropdown-section-items";
-import { Popover } from "@/src/primitives/popover";
+import { ClearButton } from "@/src/primitives/clear-button";
 
 const meta = {
 	title: "Primitives/ComboBoxField",
@@ -43,15 +48,15 @@ export const Default: Story = {
 					<ComboBoxInput />
 				</ComboBoxControl>
 				<Popover>
-					<Dropdown items={fruits}>
+					<ListBox items={fruits}>
 						{(item) => {
 							return (
-								<DropdownItem key={item.id} textValue={item.label}>
+								<ListBoxItem key={item.id} textValue={item.label}>
 									{item.label}
-								</DropdownItem>
+								</ListBoxItem>
 							);
 						}}
-					</Dropdown>
+					</ListBox>
 				</Popover>
 			</ComboBoxField>
 		);
@@ -98,6 +103,62 @@ export const DisabledItems: Story = {
 	render: Default.render,
 };
 
+export const WithIcon: Story = {
+	args: {
+		...Default.args,
+	},
+	render(args) {
+		return (
+			<ComboBoxField {...args}>
+				<ComboBoxControl>
+					<Icon className="mx-2">
+						<DollarSignIcon />
+					</Icon>
+					<ComboBoxInput />
+				</ComboBoxControl>
+				<Popover>
+					<ListBox items={fruits}>
+						{(item) => {
+							return (
+								<ListBoxItem key={item.id} textValue={item.label}>
+									{item.label}
+								</ListBoxItem>
+							);
+						}}
+					</ListBox>
+				</Popover>
+			</ComboBoxField>
+		);
+	},
+};
+
+export const WithClearButton: Story = {
+	args: {
+		...Default.args,
+	},
+	render(args) {
+		return (
+			<ComboBoxField {...args}>
+				<ComboBoxControl>
+					<ComboBoxInput />
+					<ClearButton />
+				</ComboBoxControl>
+				<Popover>
+					<ListBox items={fruits}>
+						{(item) => {
+							return (
+								<ListBoxItem key={item.id} textValue={item.label}>
+									{item.label}
+								</ListBoxItem>
+							);
+						}}
+					</ListBox>
+				</Popover>
+			</ComboBoxField>
+		);
+	},
+};
+
 export const ItemDescriptions: Story = {
 	args: {
 		...Default.args,
@@ -109,22 +170,22 @@ export const ItemDescriptions: Story = {
 					<ComboBoxInput />
 				</ComboBoxControl>
 				<Popover>
-					<Dropdown items={fruits}>
+					<ListBox items={fruits}>
 						{(item) => {
 							return (
-								<DropdownItem
+								<ListBoxItem
 									key={item.id}
 									className={`inline-grid h-[unset]! gap-y-0.5 ${args.size === "sm" ? "py-1.5" : "py-2"}`} // FIXME:
 									textValue={item.label}
 								>
-									<DropdownItemLabel>{item.label}</DropdownItemLabel>
-									<DropdownItemDescription className="text-sm">
+									<ListBoxItemLabel>{item.label}</ListBoxItemLabel>
+									<ListBoxItemDescription className="text-sm">
 										{item.description}
-									</DropdownItemDescription>
-								</DropdownItem>
+									</ListBoxItemDescription>
+								</ListBoxItem>
 							);
 						}}
-					</Dropdown>
+					</ListBox>
 				</Popover>
 			</ComboBoxField>
 		);
@@ -142,24 +203,24 @@ export const Sections: Story = {
 					<ComboBoxInput />
 				</ComboBoxControl>
 				<Popover>
-					<Dropdown items={sections}>
+					<ListBox items={sections}>
 						{(section) => {
 							return (
-								<DropdownSection key={section.id}>
-									<DropdownSectionHeader>{section.label}</DropdownSectionHeader>
-									<DropdownSectionItems items={section.children}>
+								<ListBoxSection key={section.id}>
+									<ListBoxSectionHeader>{section.label}</ListBoxSectionHeader>
+									<ListBoxSectionItems items={section.children}>
 										{(item) => {
 											return (
-												<DropdownItem key={item.id} textValue={item.label}>
+												<ListBoxItem key={item.id} textValue={item.label}>
 													{item.label}
-												</DropdownItem>
+												</ListBoxItem>
 											);
 										}}
-									</DropdownSectionItems>
-								</DropdownSection>
+									</ListBoxSectionItems>
+								</ListBoxSection>
 							);
 						}}
-					</Dropdown>
+					</ListBox>
 				</Popover>
 			</ComboBoxField>
 		);

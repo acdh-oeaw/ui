@@ -18,9 +18,9 @@ export const comboBoxInputStyles = styles({
 	],
 	variants: {
 		size: {
-			sm: ["px-2.5"],
-			md: ["px-3"],
-			lg: ["px-3.5"],
+			sm: ["pr-2.5 first:pl-2.5"],
+			md: ["pr-3 first:pl-3"],
+			lg: ["pr-3.5 first:pl-3.5"],
 		},
 	},
 	combinations: [],

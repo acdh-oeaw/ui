@@ -11,11 +11,11 @@ import {
 import { useStylesContext } from "@/src/primitives/styles-context";
 
 export const tableCellStyles = styles({
-	base: [],
+	base: ["border-b border-stroke-weak text-left whitespace-nowrap text-text-weak"],
 	variants: {
 		size: {
 			sm: [],
-			md: [],
+			md: ["h-16 px-6 py-4.5 text-base/6"],
 			lg: [],
 		},
 	},

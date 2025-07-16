@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { PendingIndicator } from "@/src/primitives/pending-indicator";
+import { PendingIndicator } from "@/src";
 
 const meta = {
 	title: "Primitives/PendingIndicator",

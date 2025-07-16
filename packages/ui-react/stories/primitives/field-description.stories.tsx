@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { FieldDescription } from "@/src/primitives/field-description";
+import { FieldDescription } from "@/src";
 
 const meta = {
 	title: "Primitives/FieldDescription",

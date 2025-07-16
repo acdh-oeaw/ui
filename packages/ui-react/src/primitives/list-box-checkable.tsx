@@ -5,9 +5,11 @@ import type { ReactNode } from "react";
 
 import { ListBox, type ListBoxProps } from "@/src/primitives/list-box";
 
-export interface DropdownProps<T extends object> extends ListBoxProps<T> {}
+export interface ListBoxCheckableProps<T extends object> extends ListBoxProps<T> {}
 
-export function Dropdown<T extends object>(props: Readonly<DropdownProps<T>>): ReactNode {
+export function ListBoxCheckable<T extends object>(
+	props: Readonly<ListBoxCheckableProps<T>>,
+): ReactNode {
 	const { children, className, ...rest } = props;
 
 	return (

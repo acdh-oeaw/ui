@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Fragment } from "react/jsx-runtime";
 
-import { CheckBox } from "@/src/primitives/check-box";
-import { CheckBoxField } from "@/src/primitives/check-box-field";
+import { CheckBox, CheckBoxField } from "@/src";
 
 const meta = {
 	title: "Primitives/CheckBoxField",
